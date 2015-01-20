@@ -5,7 +5,7 @@
 		<h4><?php echo $info['title'];?></h4>
 		<p class="time"><?php echo date('Y年m月d日' , $info['ctime']);?>&emsp;by：<?php echo $info['author'];?></p>
 		<div class="conBox">
-			<img src="/zmo/static/img/newsImg.jpg" />
+			<img src="<?php echo $info['img'];?>" />
 			<?php echo $info['content'];?>
 		</div>
 	</div>

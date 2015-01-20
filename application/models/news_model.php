@@ -63,7 +63,7 @@ class News_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , title , content , ntime , author,ctime' );
+		$this->db->select ( 'id , title , img, content , ntime , author,ctime' );
 		$this->db->from ( 'news' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ();
