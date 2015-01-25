@@ -35,7 +35,7 @@
 									class="ititle"><?php echo $v['title'];?></div></a>
 							<p><?php echo $v['desc'];?></p>
 							<div class="label">
-								<span>By<?php echo $v['author']?></span>&emsp;<?php echo date('Y年m月d日' , $v['ntime']);?>&emsp;<?php echo date('H:i' , $v['ntime']);?>&emsp;&emsp;阅读(<?php echo $v['rnum']?>)</div>
+								<span>By <?php echo $v['author']?></span>&emsp;<?php echo date('Y年m月d日' , $v['utime']);?>&emsp;<?php echo date('H:i' , $v['utime']);?>&emsp;&emsp;阅读(<?php echo $v['rnum']?>)</div>
 						</div>
 					</li>
 				</ul>

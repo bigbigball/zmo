@@ -1,7 +1,7 @@
 <div class="cmfooter">
 	<div class="footer_menu clearfix">
 		<ul class="clearfix">
-			<li class="check_menu"><a href="<?php echo site_url('new/aboutus')?>">关于我们</a></li>
+			<li class="check_menu"><a href="<?php echo site_url('news/news/aboutus')?>">关于我们</a></li>
 			<li><a href="<?php echo site_url('news/news/joinus')?>">加入我们</a></li>
 			<li><a href="<?php echo site_url('news/news/help')?>">帮助</a></li>
 			<li id="feedback"><a href="javascript:void(0);">意见反馈</a></li>
@@ -49,7 +49,7 @@
 	<div class="tab">
 		<img src="/zmo/static/img/logo2.png" class="logo" /> <a
 			href="javascript:;" rel="logintab" class="curr">会员登录</a>
-		<!--a href="javascript:;" rel="regtab">会员注册</a-->
+		<a href="javascript:;" rel="regtab">会员注册</a>
 	</div>
 	<div class="login_con">
 		<div id="logintab">

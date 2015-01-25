@@ -22,7 +22,7 @@ class News_model extends CI_Model {
 	}
 	function getlist($post) {
 		$data = array ();
-		$this->db->select ( 'id , title , desc , author , ntime , rnum,img' );
+		$this->db->select ( 'id , title , desc , author , utime , rnum,img' );
 		if ($post ['type'] > 0) {
 			$this->db->where ( 'type =', $post ['type'] );
 		}

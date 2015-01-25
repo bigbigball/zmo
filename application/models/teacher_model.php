@@ -119,7 +119,7 @@ class Teacher_model extends CI_Model {
 	function get_home() {
 		$info = array ();
 		$this->db->select ( 'id,name,portrait,occupation as occ , desc' );
-		$this->db->limit ( 5 );
+		$this->db->limit ( 6 );
 		$query = $this->db->get ( 'tutor' );
 		if ($query->num_rows () > 0) {
 			$info ['info'] = $query->result_array ();
