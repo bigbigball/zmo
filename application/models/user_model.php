@@ -27,9 +27,10 @@ class User_model extends CI_Model {
 					$id = $this->db->insert_id ();
 					$update_data ['user_id'] = $id;
 					$update_data ['reg_type'] = 1;
+					$update_data ['status'] = 1;
 					$update_data ['utime'] = time ();
 					
-					$this->db->where ( 'code =' . $parmes ['m_code'] )->update ( 'code', $update_data );
+					$this->db->where ( 'code' , $parmes ['m_code'] )->update ( 'code', $update_data );
 					$_SESSION ['uid'] = $id;
 					$_SESSION ['uname'] = substr ( $parmes ['mail'], 0, strpos ( $parmes ['mail'], '@' ) );
 					return array (
@@ -223,7 +224,7 @@ class User_model extends CI_Model {
 			return 400;
 		}
 		$this->db->select ( '`id`,`expire`' );
-		$this->db->where ( 'code =', $code );
+		$this->db->where ( 'code', $code );
 		$query = $this->db->get ( 'code' );
 		if ($query->num_rows () > 0) {
 			$info = $query->row_array ();

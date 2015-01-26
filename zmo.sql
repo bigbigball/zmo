@@ -147,7 +147,10 @@ CREATE TABLE `z_code` (
   `mail` varchar(200) DEFAULT NULL,
   `code` varchar(200) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `stype` tinyint(4) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL,
+  `reg_type` tinyint(4) NOT NULL,
   `expire` int(11) NOT NULL,
   `ctime` int(11) NOT NULL,
   `utime` int(11) NOT NULL,
@@ -158,8 +161,6 @@ CREATE TABLE `z_code` (
 -- ----------------------------
 -- Records of z_code
 -- ----------------------------
-INSERT INTO `z_code` VALUES ('1', null, null, '134567980', '8', '1', '1417368471', '0', '1417531080');
-INSERT INTO `z_code` VALUES ('2', null, null, '1', '11', '1', '1419379199', '0', '1419194711');
 
 -- ----------------------------
 -- Table structure for z_collect
