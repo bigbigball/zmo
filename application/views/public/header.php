@@ -19,7 +19,7 @@
             <?php }else{?>
                 <a href="<?php echo site_url('user/user/login');?>">登录</a><span
 					style="margin: 0px 15px; color: #fff; height: 15px; display: inline-block;"></span>
-				<a href="<?php echo site_url('user/user/regist');?>">注册</a>
+				<a href="<?php echo site_url('user/user/regist');?>" style="margin-right:19px">注册</a>
             <?php }?>
         </div>
 			<div class="clearfix" style="margin-top: 10px;">

@@ -1,10 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
-.btn-box .btn{ display:inline-block; width:272px; height:60px; text-align:center; line-height:60px; font-size:26px; color:#fff; background:#01a8ee; -webkit-border-radius:8px; -moz-border-radius:8px; -o-border-radius:8px; border-radius:8px; }
+.btn-box .btn{ display:inline-block; width:272px; height:60px; text-align:center; line-height:60px; font-size:26px; color:#fff; background:#01a8ee; -webkit-border-radius:8px; -moz-border-radius:8px; -o-border-radius:8px; border-radius:8px; margin-left:0px; margin-top: -95px;}
 
 
-.introduction{}
+.introduction{padding-top:30px}
 .introduction p{ text-indent:2em; color:#666; font-size:18px; line-height:24px; }
 
 .detail_info{float:left}
@@ -20,9 +20,9 @@
 .leftBanner{float:left; width:198px; border:1px solid #e6e6e6; padding:10px 0 0 10px}
 .leftBanner a{display:block; height:24px; line-height:24px;color:#000; font-size:20px; font-weight:normal; padding-left:16px; margin-bottom:30px}
 .leftBanner a:hover,.leftBanner .curr{border-left:6px solid #01a8ee; padding-left:10px}
-.about_rt{float:left; width:775px; margin-left:18px}
+.about_rt{float:left; width:774px; margin-left:18px}
 .about_rt h4{text-align:center; font-size:36px; line-height:36px; padding:20px 0 35px; font-weight:normal}
-.about_rt p,.conBox p{text-indent:2em; font:20px/36px "Microsoft Yahei"}
+.about_rt p,.conBox p{text-indent:2em; font:16px/26px "Microsoft Yahei"}
 .about_con{display:none}
 /*资讯详情*/
 .newsInfo h4,.vedioInfo h4{font-weight:normal; font-size:24px; padding:40px 0 15px}

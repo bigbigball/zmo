@@ -17,7 +17,7 @@
 .cmbody .list .info .iblock .iinfo .iteachter{ color:#666; font-size:16px;}
 .cmbody .list .info .iblock .iinfo .ctag{ height:25px; line-height:25px; font-size:16px;}
 .cmbody .list .info .iblock .iinfo .ctags{ margin-left:5px; background-color:#f6f6f6; padding:0px 5px;}
-.cmbody .list .info .iblock .iinfo .idesc{ color:#666; font-size:16px; height:65px; overflow:hidden}
+.cmbody .list .info .iblock .iinfo .idesc{ color:#666; font-size:16px; overflow:hidden}
 .cmbody .list .info .iblock .iinfo .iprice{ color:#666; font-size:16px;}
 .cmbody .list .info .iblock .iinfo .iprice .price{ color:#01a8ee}
 .cmbody .list .info .iblock .iinfo .ibutton{ background:url(../img/listbuttonbg.png) no-repeat scroll center center; width:270px; height:48px; font-size:16px; line-height:48px; text-align:center;}

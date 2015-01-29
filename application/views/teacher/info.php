@@ -2,12 +2,12 @@
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
 <div class="cmbody">
 	<div class="clearfix mt40 ">
-		<img src="/<?php echo $info['portrait'];?>" title="" alt=""
+		<img src="<?php echo $info['portrait'];?>" title="" alt=""
 			class="left mr40" />
 		<div>
 			<p class="f24 mb20"><?php echo $info['name']?></p>
 			<p class="f16 mb20">简介：<?php echo $info['occupation'];?></p>
-			<p class="f16 mb30" style="height: 115px;"><?php echo $info['desc'];?></p>
+			<p class="f16 mb30" style="height: 45px;"><?php echo $info['desc'];?></p>
 			<div class="btn-box">
 				<input type="hidden" value="<?php echo $info['id'];?>" id="tid" />
                 <?php if($is_collect){?>
@@ -15,7 +15,7 @@
 					style="color: #000; font-size: 20px; margin-top: 50px; display: block;">已收藏</a>
                 <?php }else{?>
                 <a href="javascript:void(0);" class="btn"
-					style="margin-top: 15px;" onclick="collection('4');">收藏</a>
+					style="margin-top: -125px;" onclick="collection('4');">收藏</a>
                 <?php }?>
             </div>
 		</div>

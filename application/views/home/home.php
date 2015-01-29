@@ -79,8 +79,10 @@
             <div class="title_text title3"></div>
             <div class="title_line"></div>
         </div>
-        <div class="active clearfix">        	
+        <div class="active clearfix">
+        	
         	<div class="active_block acitve_relative">
+			
             	<div><img src="/static/tmp/active1.png" width="325px;"/></div>
                 <div class="active_info">
                 	<div class="active_title">北京青年创业大讲堂</div>
@@ -89,6 +91,7 @@
                         10月31日 14：00-16：00
                     </div>
                 </div>
+				</a>
             </div>
             <div class="active_block clearfix activelr">
             	<div class="acitve_relative">
@@ -134,9 +137,10 @@
         </div>
         <div class="teacher clearfix">
             <?php if(!empty($teacher)){foreach($teacher as $k=> $v){?>
+			<a href="<?php echo site_url('teacher/teacher/info/'.$v['id']);?>">
             <div class="teacher_info">
                 <div class="teacher_photo">
-                     <a href="<?php echo site_url('teacher/teacher/info/'.$v['id']);?>"><img src="<?php echo $v['portrait'];?>" width="250" height="225"/></a>
+                     <img src="<?php echo $v['portrait'];?>" width="250" height="225"/>
                     <span></span>
                 </div>
                 <div class="teacher_name">
@@ -144,6 +148,7 @@
                     <div class="teacher_desc"><?php echo $v['occ'];?></div>
                 </div>
             </div>
+			</a>
             <?php }}?>
         </div>
     </div>
