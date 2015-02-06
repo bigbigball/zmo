@@ -6,11 +6,11 @@
 	</div>
 	<h1 style="margin-top: 20px;"><?php echo $msg;?></h1>
 	<h3 style="margin-top: 20px;">
-		<span id="seconde">5</span>秒后跳转
+		<span id="seconde">3</span>秒后跳转
 	</h3>
 </div>
 <script>
-var s = 5, t;
+var s = 3, t;
 function settime(){
 	s--;
 	$("#seconde").html(s);

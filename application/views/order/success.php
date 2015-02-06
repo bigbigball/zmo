@@ -16,7 +16,7 @@
 	</div>
 </div>
 <script>
-var s = 5, t;
+var s = 3, t;
 function settime(){
 	s--;
 	t = setTimeout('settime()', 1000);
