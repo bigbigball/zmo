@@ -73,11 +73,8 @@ class Order_model extends CI_Model {
 	function do_pay($post) {
 	}
 	function center($post) {
-		if (empty ( $post ['otype'] )) {
-			return false;
-		}
 		$this->db->select ( 'id , price , ctime , status,order_sn' );
-		if ($post ['otype'] > 0) {
+		if (isset( $post ['otype'] )) {
 			$this->db->where ( 'status', $post ['otype'] );
 		}
 		$this->db->where ( 'user_id', $_SESSION ['uid'] );

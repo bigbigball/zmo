@@ -1,5 +1,23 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
+<script>
+function sign_up(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('user/user/is_login')?>",
+		data: "_r=" + Math.random(),
+		success: function(msg){
+			var info = eval("(" + msg + ")");
+			if(info.ret != 200){
+				alert(info.msg);	
+			}else{
+				$("#post_form").submit();	
+			}
+		}	
+	});	
+}
+</script>
+
 <div class="cmbody">
 	<div class="clearfix mt40 ">
 		<form action="<?php echo site_url('buy/sign_up');?>" method="post"
@@ -129,22 +147,6 @@ switch (date ( 'w', $info ['etime'] )) {
 	<!--评论-->
 </div>
 <script>
-function sign_up(){
-	$.ajax({
-		type: "POST",
-		url: "<?php echo site_url('user/user/is_login')?>",
-		data: "_r=" + Math.random(),
-		success: function(msg){
-			var info = eval("(" + msg + ")");
-			if(info.ret != 200){
-				alert(info.msg);	
-			}else{
-				$("#post_form").submit();	
-			}
-		}	
-	});	
-}
-
 function comment_submit(){
 	var comment_val = $("#comment").val();
 	if(comment_val && comment_val != '不吐不快'){

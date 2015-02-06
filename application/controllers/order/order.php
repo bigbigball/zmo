@@ -12,10 +12,12 @@ class Order extends CI_Controller {
 		$this->load->library ( 'form_validation' );
 	}
 	public function buy() {
-		if (empty ( $_SESSION ['oid'] )) {
+		$get = $this->input->get ();
+        $oid = intval($get ['oid']);
+
+		if (empty ( $oid )) {
 			err_msgs ( '您的订单有误，请查看后，继续购买', site_url ( 'user/user/center' ) );
 		}
-		$oid = $_SESSION ['oid'];
 		$info = $this->order_model->get_order ( $oid );
 		if ($info ['ret'] == 200) {
 			if ($info ['info'] ['type'] == 2) {
