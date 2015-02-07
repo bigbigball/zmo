@@ -19,28 +19,19 @@
 			<div class="userInfo mt20">
         	<?php if(!empty($uinfo)){?>
         	<p>姓名：<?php echo $uinfo['info']['nick_name'];?></p>
-				<p>邮箱：<?php echo $uinfo['info']['email'];?></p>
-				<p>手机：<?php echo $uinfo['info']['mobile'];?></p>
+			<p>邮箱：<?php echo $uinfo['info']['email'];?></p>
+			<p>手机：<?php echo $uinfo['info']['mobile'];?></p>
             <?php }?>
-        </div>
+        	</div>
+        	<p>&nbsp;</p>
 			<p class="price mt30">
 				价格：<span class="blue f40"><?php echo $info['price'];?>元</span>
 			</p>
 			<div class="tip">选择您的支付方式</div>
 			<ul class="paymentList mt45 clearfix" id="paymentList">
-				<li><span class="radio"> <input type="radio" id="alipay"
+				<li class="active"><span class="radio active"> <input type="radio" id="alipay"
 						class="dishide" />
 				</span> <label for="alipay"> <img src="/zmo/static/img/alipay.jpg"
-						alt="" title="" />
-				</label></li>
-				<li><span class="radio"> <input type="radio" id="zhaoshang"
-						class="dishide" />
-				</span> <label for="zhaoshang"> <img src="/zmo/static/img/zhaoshang.jpg"
-						alt="" title="" />
-				</label></li>
-				<li class="noMr"><span class="radio"> <input type="radio"
-						id="gongshang" class="dishide" />
-				</span> <label for="gongshang"> <img src="/zmo/static/img/gongshang.jpg"
 						alt="" title="" />
 				</label></li>
 			</ul>
@@ -53,18 +44,18 @@
 </div>
 <script>
 $(document).ready(function(){
-	$(".ltat div").each(function(){
-		$(this).click(function(){
-			$(".ltat div").each(function(){$(this).removeClass('check');});
-			$(this).addClass('check');
-		});
-	});
-	$(".rtag div").each(function(){
-		$(this).click(function(){
-			$(".rtag div").each(function(){$(this).removeClass('check');});
-			$(this).addClass('check');	
-		});	
-	});
+// 	$(".ltat div").each(function(){
+// 		$(this).click(function(){
+// 			$(".ltat div").each(function(){$(this).removeClass('check');});
+// 			$(this).addClass('check');
+// 		});
+// 	});
+// 	$(".rtag div").each(function(){
+// 		$(this).click(function(){
+// 			$(".rtag div").each(function(){$(this).removeClass('check');});
+// 			$(this).addClass('check');	
+// 		});	
+// 	});
 	$("#payNow").click(function(){
 		$("#post_form").submit();	
 	});

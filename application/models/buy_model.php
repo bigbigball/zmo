@@ -53,7 +53,8 @@ class Buy_model extends CI_Model {
 			$this->db->trans_complete ();
 			if ($this->db->trans_status () === true) {
 				return array (
-						'ret' => 200 
+						'ret' => 200,
+						'oid' => $oid, 
 				);
 			}
 			return array (

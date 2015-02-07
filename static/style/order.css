@@ -50,7 +50,8 @@
 .orderContent .btn-box .btn:hover{ background-image:url(../img/orderSureBtn_active.png); }
 
 /* 在线支付 */
-.payOnline .userInfo{ margin-top:30px; border-bottom:1px solid #e6e6e6; }
+/* .payOnline .userInfo{ margin-top:30px; border-bottom:1px solid #e6e6e6; }*/
+.payOnline .userInfo{ margin-top:30px; }
 .payOnline .userInfo p{font-size:24px; line-height:42px; color:#000;}
 .payOnline .price{ font-size:36px; color:#666; }
 .payOnline .tip{ font-size:24px; color:#000; margin-top:40px; }
