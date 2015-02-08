@@ -17,7 +17,11 @@
 .orderList .title{ background:#01a8ee; height:50px; line-height:50px; color:#fff; font-size:18px; margin-bottom:20px; }
 .orderList .name{ float:left; width:460px; margin-right:60px; }
 .orderList .pay{ float:left; width:110px; text-align:center; }
+<<<<<<< HEAD
 .orderList .status{ float:left; width:120px; text-align:center; margin-top: 42px;}
+=======
+.orderList .status{ float:left; width:100px; text-align:center; }
+>>>>>>> 4b9139596fdccae7a1e24f39a03c6c57967e8db9
 .orderList .title .name{ padding-left:160px; width:300px; }
 .orderList li{ border:1px solid #e6e6e6; height:175px; margin-bottom:20px; }
 .orderList li .detail{ height:35px; background:#f8f8f8; line-height:35px; color:#666; font-size:16px; padding-left:20px; }
@@ -50,7 +54,8 @@
 .orderContent .btn-box .btn:hover{ background-image:url(../img/orderSureBtn_active.png); }
 
 /* 在线支付 */
-.payOnline .userInfo{ margin-top:30px; border-bottom:1px solid #e6e6e6; }
+/* .payOnline .userInfo{ margin-top:30px; border-bottom:1px solid #e6e6e6; }*/
+.payOnline .userInfo{ margin-top:30px; }
 .payOnline .userInfo p{font-size:24px; line-height:42px; color:#000;}
 .payOnline .price{ font-size:36px; color:#666; }
 .payOnline .tip{ font-size:24px; color:#000; margin-top:40px; }

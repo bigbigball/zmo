@@ -155,9 +155,18 @@ class User extends CI_Controller {
 		/*
 		 * $user_info = $this->user_model->get_user_info(); $data['user_info'] = $user_info; $this->load->view('user/center' , $data);
 		 */
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
 		$this->order ();
 	}
 	function order() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+		
 		$get = $this->input->get ();
 		$action = ! empty ( $get ['action'] ) ? $get ['action'] : 'my_order_pay';
 		$otype = 0;
@@ -184,6 +193,11 @@ class User extends CI_Controller {
 		$this->load->view ( 'user/order', $data );
 	}
 	function collect() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+		
 		$get = $this->input->get ();
 		$action = ! empty ( $get ['action'] ) ? $get ['action'] : 'my_order_pay';
 		$otype = 0;

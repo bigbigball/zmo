@@ -412,6 +412,10 @@ CREATE TABLE `z_order` (
   `itype` tinyint(3) DEFAULT '0',
   `status` tinyint(3) DEFAULT '0',
   `user_id` int(11) DEFAULT '0',
+  `buyer_email` varchar(128) DEFAULT NULL,
+  `buyer_id` varchar(128) DEFAULT NULL,
+  `notify_id` varchar(128) DEFAULT NULL,
+  `trade_no` varchar(128) DEFAULT NULL,
   `ctime` int(11) DEFAULT '0',
   `utime` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)

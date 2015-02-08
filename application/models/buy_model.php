@@ -27,11 +27,11 @@ class Buy_model extends CI_Model {
 			$this->db->trans_start ();
 			$data ['order_sn'] = $this->get_order_sn ();
 			$data ['price'] = $info ['price'];
-			$data ['amount'] = $info ['price'];
+			$data ['amount'] = 1;
 			$data ['discount'] = 0;
 			$data ['pay_type'] = 0;
 			$data ['type'] = 0;
-			$data ['status'] = 0;
+			$data ['status'] = floatval($info ['price']) == 0 ? 2 : 0;
 			$data ['user_id'] = $_SESSION ['uid'];
 			$dtga ['itype'] = $info ['type'];
 			$data ['ctime'] = time ();
@@ -52,9 +52,9 @@ class Buy_model extends CI_Model {
 			$this->db->insert ( 'order_goods', $ogoods );
 			$this->db->trans_complete ();
 			if ($this->db->trans_status () === true) {
-				$_SESSION ['oid'] = $oid;
 				return array (
-						'ret' => 200 
+						'ret' => 200,
+						'oid' => $oid, 
 				);
 			}
 			return array (

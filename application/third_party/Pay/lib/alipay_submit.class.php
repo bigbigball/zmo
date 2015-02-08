@@ -90,7 +90,11 @@ class AlipaySubmit {
 		// 待请求参数数组
 		$para = $this->buildRequestPara ( $para_temp );
 		
-		$sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='" . $this->alipay_gateway_new . "_input_charset=" . trim ( strtolower ( $this->alipay_config ['input_charset'] ) ) . "' method='" . $method . "'>";
+		
+		$sHtml = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+        $sHtml .= "<p>支付跳转中 ... </p>";
+		$sHtml .= "<form id='alipaysubmit' style='display:none' name='alipaysubmit' action='" . $this->alipay_gateway_new . "_input_charset=" . trim ( strtolower ( $this->alipay_config ['input_charset'] ) ) . "' method='" . $method . "'>";
+		
 		while ( list ( $key, $val ) = each ( $para ) ) {
 			$sHtml .= "<input type='hidden' name='" . $key . "' value='" . $val . "'/>";
 		}

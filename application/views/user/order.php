@@ -27,13 +27,14 @@
 									<!--span>视频课程</span-->
 								</div><?php echo $order['order_goods'][$v['id']]['goods_title'];?>
                             </div>
-							<div class="pay"><?php echo $v['price'];?></div>
+							<div class="pay"><p><?php echo $v['price'];?></p></div>
 							<div class="status">
                             	<?php if($v['status'] == 2){?>
                                 <p>已支付</p>
-                                <?php }else if($v['status']){?>
-                            	<p>待支付</p>
-								<!--a href="" class="btn">支付</a-->
+                                <?php }else if($v['status'] == 0){?>
+								<p><a href="<?php echo
+                                site_url('order/order/buy',array('oid' => $v['id']));?>"
+                                class="btn">支付</a></p>
                                 <?php }?>
                             </div>
 						</div>
