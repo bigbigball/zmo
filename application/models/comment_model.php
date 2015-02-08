@@ -44,7 +44,7 @@ class Comment_model extends CI_Model {
 		$this->db->where ( 'cid', $post ['id'] );
 		$this->db->where ( 'type', $post ['type'] );
 		$this->db->where ( 'status', '0' );
-		$this->db->limit ( 5, $post ['page'] * 5 );
+		//$this->db->limit ( 5, $post ['page'] * 5 );
 		$this->db->order_by ( 'id', 'desc' );
 		$query = $this->db->get ( 'comment' );
 		if ($query->num_rows () > 0) {
@@ -65,7 +65,7 @@ class Comment_model extends CI_Model {
 		}
 		return array (
 				'ret' => 204,
-				'msg' => '没有相关数据' 
+				'msg' => '没有更多数据' 
 		);
 	}
 	function get_user_info($uid) {

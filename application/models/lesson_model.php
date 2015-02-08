@@ -6,8 +6,8 @@ class Lesson_model extends CI_Model {
 	function get_home() {
 		$this->db->select ( 'id , title , desc , guest_id , is_price , price, ,tag_info as tag , type , top,img,thumb' );
 		$this->db->where ( 'status = ', 0 );
-		$this->db->order_by ( 'order', 'desc' );
-		$this->db->order_by ( 'id', 'desc' );
+		$this->db->where ( 'position != ', 0 );
+		$this->db->order_by('position');
 		$this->db->limit ( 5 );
 		$data = array ();
 		$query = $this->db->get ( 'lesson' );

@@ -1,5 +1,14 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/list.css" />
+
+<div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li class="active">课程</li>
+</ol>
+ </div>
+
 <div class="cmbody">
 	<div class="list">
 		<div class="tag clearfix">

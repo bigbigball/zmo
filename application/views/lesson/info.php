@@ -1,6 +1,14 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
 <div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li><a href="<?php echo site_url('lesson/lesson/show')?>">课程</a></li>
+  <li class="active"><?php echo $info['title'];?></li>
+</ol>
+ </div>
+<div class="cmbody">
 	<div class="clearfix mt40 ">
 		<form action="<?php echo site_url('buy/sign_up');?>" method="post"
 			enctype="multipart/form-data" id="post_form">
@@ -124,7 +132,8 @@ switch (date ( 'w', $info ['etime'] )) {
 		</p>
 		<ul class="news_comment_user">
 		</ul>
-		<strong class="bot" id="news_comment_more">展开查看全部</strong>
+		<strong class="bot" id="news_comment_less">收起全部</strong>
+		<strong class="bot" id="news_comment_more" style="display: none;">展开查看全部</strong>
 	</div>
 	<!--评论-->
 </div>
@@ -167,7 +176,7 @@ function comment_submit(){
 	}
 }
 
-function flush_comment(p = 0){
+function flush_comment(p){
 	$.ajax({
 		type: "POST",
 		url: "<?php echo site_url('comment/get_comment')?>",
@@ -204,10 +213,16 @@ $(document).ready(function(){
 	}).blur(function(){
 			
 	});
-	flush_comment();
+	flush_comment(page);
 	$("#news_comment_more").click(function(){
-		page ++ ;
-		flush_comment(page);	
+		flush_comment(page);
+		$(this).css("display", "none"); 
+		$("#news_comment_less").css("display", "block"); 
+	});
+	$("#news_comment_less").click(function(){
+		$(".news_comment_user").html('');
+		$(this).css("display", "none"); 
+		$("#news_comment_more").css("display", "block"); 
 	});
 });
 </script>

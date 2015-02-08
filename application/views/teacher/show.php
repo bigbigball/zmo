@@ -1,5 +1,12 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/teacher.css" />
+<div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li class="active">导师</li>
+</ol>
+ </div>
 <div class=" cmbody">
 	<div class="block mt60">
 		<ul class="teacherList clearfix">

@@ -93,9 +93,9 @@ input{ outline:0;border:none;}
 /*body*/
 .cmbody{ width:1003px; background-color:#fff; margin:0 auto;}
 /*footer*/
-.cmfooter{ height:266px; background-color:#01a8ee; margin-top:55px; padding-top:10px}
-.cmfooter .footer{padding-top:30px;}
-.cmfooter .footer .code{ width:265px; margin:0 auto;}
+.cmfooter{ height:266px; background-color:#01a8ee; margin-top:55px;}
+.cmfooter .footer{padding-top:10px;}
+.cmfooter .footer .code{ width:125px; margin:0 auto;}
 .cmfooter .footer .code .weixin{ float:left;}
 .cmfooter .footer .code .fline{ float:left;}
 .cmfooter .footer .code .ios{ float:left;}
@@ -103,7 +103,7 @@ input{ outline:0;border:none;}
 .cmfooter .footer .code .fline{ background:url(/img/fline.png) no-repeat top center; width:1px ; height:110px;}
 .cmfooter .footer .code  .word{ color:#fff; text-align:center; margin-top:8px; font-size:14px}
 
-.cmfooter .footer_menu{ width:505px; margin:auto; text-align:center; color:#fff;}
+.cmfooter .footer_menu{ width:505px; margin:auto; padding-top: 10px;text-align:center; color:#fff;}
 .cmfooter .footer_menu ul{}
 .cmfooter .footer_menu ul li{ float:left; text-align:center; padding:0px 5px; font-size:14px; margin-left:55px; cursor:pointer; line-height:32px; border-bottom:1px solid #01a8ee}
 .cmfooter .footer_menu li:hover{ border-bottom:1px solid #fff}
@@ -168,7 +168,7 @@ input{ outline:0;border:none;}
 .close{position:absolute; top:30px; right:30px; width:31px; height:31px; text-indent:-999em; background:url(../img/close.png) no-repeat}
 .close:hover{opacity:0.7}
 .pop_box .text,#pop_feedback textarea{border:1px solid #dadada; height:60px; line-height:60px; padding:0 10px; width:520px; color:#838383; font:20px/30px "Microsoft Yahei"}
-#pop_feedback textarea{height:200px; padding:10px; margin-top:28px}
+#pop_feedback textarea{height:200px; padding:10px; margin-top:8px}
 #pop_feedback .tip{float:right; color:#d3d2d2; font-size:14px; margin:5px 0 20px}
 .pop_box .btn{background:#01a8ee; height:62px; width:100%; color:#fff; font-size:20px; font-family:"Microsoft Yahei"; cursor:pointer}
 /*登录弹框*/
@@ -184,3 +184,33 @@ input{ outline:0;border:none;}
 .login_con .bot label{float:left}
 .login_con .bot a{float:right; color:#838383; font-size:18px; line-height:24px}
 .login_con .bot a:hover{color:#01a8ee}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px
+}
+
+.breadcrumb>li>a {
+    font-family: "Microsoft YaHei";
+	font-size: 18px;
+	color: #333333;
+	line-height: 1.8em;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.breadcrumb>li {
+    display: inline-block
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #333333;
+    content: "/\00a0"
+}
+
+.breadcrumb>.active {
+    color: #333333
+}

@@ -1,6 +1,14 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
 <div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li><a href="<?php echo site_url('teacher/teacher/show')?>">导师</a></li>
+  <li class="active"><?php echo $info['name']?></li>
+</ol>
+ </div>
+<div class="cmbody">
 	<div class="clearfix mt40 ">
 		<img src="<?php echo $info['portrait'];?>" title="" alt=""
 			class="left mr40" />
@@ -14,8 +22,7 @@
                 <a
 					style="color: #000; font-size: 20px; margin-top: 50px; display: block;">已收藏</a>
                 <?php }else{?>
-                <a href="javascript:void(0);" class="btn"
-					style="margin-top: -125px;" onclick="collection('4');">收藏</a>
+                <a href="javascript:void(0);" class="btn" onclick="collection('4');">收藏</a>
                 <?php }?>
             </div>
 		</div>

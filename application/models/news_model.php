@@ -6,8 +6,8 @@ class News_model extends CI_Model {
 	public function get_home() {
 		$this->db->select ( 'id , title , desc , author , ntime , rnum,ctime ,img' );
 		$this->db->where ( 'status = ', 0 );
-		$this->db->order_by ( 'order', 'desc' );
-		$this->db->order_by ( 'id', 'desc' );
+		$this->db->where ( 'position != ', 0 );
+		$this->db->order_by('position');
 		$this->db->limit ( 3 );
 		$data = array ();
 		$query = $this->db->get ( 'news' );

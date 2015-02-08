@@ -6,6 +6,9 @@ class User extends CI_Controller {
 	function __construct() {
 		parent::__construct ();
 		$this->load->model ( 'user_model', '', true );
+		$this->load->model ( 'lesson_model', '', true );
+		$this->load->model ( 'active_model', '', true );
+		$this->load->model ( 'teacher_model', '', true );
 		$this->load->library ( 'form_validation' );
 	}
 	function regist() {
@@ -189,10 +192,10 @@ class User extends CI_Controller {
 				$otype = 2;
 				break;
 			case 'collect_active' :
-				$otype = 4;
+				$otype = 3;
 				break;
 			case 'collect_tutor' :
-				$otype = 5;
+				$otype = 4;
 				break;
 			default :
 				$otype = 1;
@@ -200,11 +203,19 @@ class User extends CI_Controller {
 		$post ['otype'] = $otype;
 		$this->load->model ( 'collection_model', '', true );
 		$collect = $this->collection_model->center ( $post );
+		$relation_id = $collect[0]['relation_id'];
+		if ($otype == 2) {
+			$info = $this->lesson_model->getinfo($relation_id);
+		} else if ($otype == 3) {
+			$info = $this->active_model->getinfo($relation_id);
+		} else if ($otype == 4) {
+			$info = $this->teacher_model->getinfo($relation_id);
+		}
 		
 		$user_info = $this->user_model->get_user_info ();
 		$data ['user_info'] = $user_info;
 		$data ['action'] = 'collect';
-		$data ['info'] = $collect;
+		$data ['info'] = $info;
 		$data ['otype'] = $otype;
 		
 		$this->load->view ( 'user/collect', $data );

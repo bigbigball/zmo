@@ -118,7 +118,10 @@ class Teacher_model extends CI_Model {
 	}
 	function get_home() {
 		$info = array ();
-		$this->db->select ( 'id,name,portrait,occupation as occ , desc' );
+		$this->db->select ( 'id,name,position,portrait,occupation as occ , desc' );
+		$this->db->where ( 'status = ', 0 );
+		$this->db->where ( 'position != ', 0 );
+		$this->db->order_by('position');
 		$this->db->limit ( 6 );
 		$query = $this->db->get ( 'tutor' );
 		if ($query->num_rows () > 0) {

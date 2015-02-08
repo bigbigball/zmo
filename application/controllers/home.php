@@ -19,13 +19,19 @@ class Home extends CI_Controller {
 		$this->load->model ( 'teacher_model', '', true );
 		$this->load->model ( 'video_model', '', true );
 		$this->load->model ( 'news_model', '', true );
+		$this->load->model ( 'carousel_model', '', true );
 		
-		$news_home = $video_home = $lesson_home = $teacher_home = array ();
+		$news_home = $video_home = $lesson_home = $teacher_home = $carousel_home = array ();
+		$active = $this->active_model->get_home();
 		$news = $this->news_model->get_home ();
 		$video = $this->video_model->get_home ();
 		$lesson = $this->lesson_model->get_home ();
 		$teacher = $this->teacher_model->get_home ();
+		$carousel = $this->carousel_model->get_home ();
 		
+		if (! empty ( $active )) {
+			$active_home = $active ['info'];
+		}
 		if (! empty ( $lesson )) {
 			$lesson_home = $lesson ['info'];
 		}
@@ -38,10 +44,15 @@ class Home extends CI_Controller {
 		if (! empty ( $teacher )) {
 			$teacher_home = $teacher ['info'];
 		}
+		if (! empty ( $carousel )) {
+			$carousel_home = $carousel ['info'];
+		}
+		$data ['active'] = $active_home;
 		$data ['video'] = $video_home;
 		$data ['news'] = $news_home;
 		$data ['lesson'] = $lesson_home;
 		$data ['teacher'] = $teacher_home;
+		$data ['carousel'] = $carousel_home;
 		$this->load->view ( '/home/home', $data );
 	}
 }

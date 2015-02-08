@@ -3,6 +3,22 @@ class Active_model extends CI_Model {
 	function __construct() {
 		parent::__construct ();
 	}
+	
+	function get_home() {
+		$this->db->select ( '*' );
+		$this->db->where ( 'status = ', 0 );
+		$this->db->where ( 'position != ', 0 );
+		$this->db->order_by('position');
+		$this->db->limit ( 4 );
+		$data = array ();
+		$query = $this->db->get ( 'active' );
+		if ($query->num_rows () > 0) {
+			$info = $query->result_array ();
+			$data ['info'] = $info;
+		}
+		return $data;
+	}
+	
 	function getlist($post) {
 		$data = array ();
 		$this->db->select ( 'id , title , desc , guest_id , is_price , price,quota ,tag,sign_num , type,img' );

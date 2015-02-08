@@ -1,6 +1,14 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
 <div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li><a href="<?php echo site_url('video/video/show')?>">视频</a></li>
+  <li class="active"><?php echo $info['video_info']['video']['title']?></li>
+</ol>
+ </div>
+<div class="cmbody">
 	<div class="clearfix mt40 ">
 		<div class="f24 mb20"><?php echo $info['video_info']['video']['title']?></div>
 		<div class="f16 mb20" style="color:"><?php echo date('Y年m月d日' , $info['ctime'])?></div>

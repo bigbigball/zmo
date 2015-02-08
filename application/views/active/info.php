@@ -1,5 +1,13 @@
 <?php $this->load->view('public/header.php');?>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/detail.css" />
+<div class="cmbody">
+ <ol class="breadcrumb">
+ 当前位置：
+  <li><a href="<?php echo site_url('home/index')?>">首页</a></li>
+  <li><a href="<?php echo site_url('active/active/show')?>">活动</a></li>
+  <li class="active"><?php echo $info['title'];?></li>
+</ol>
+ </div>
 <div class=" cmbody ">
 	<form action="<?php echo site_url('buy/sign_up');?>" method="post"
 		enctype="multipart/form-data" id="post_form">
@@ -7,7 +15,7 @@
 			<img src="<?php echo $info['img'];?>" title="" alt=""
 				class="left mr40" />
 			<div>
-				<p class="f24 mb20" style="line-height: 35px;"><?php echo $info['title'];?>三个IT男创业，100天卖出20万个肉夹馍</p>
+				<p class="f24 mb20" style="line-height: 35px;"><?php echo $info['title'];?></p>
 
 				<p class="f16 mb20">主题：<?php echo $info['theme']?></p>
 
@@ -22,8 +30,8 @@
             	<a href="javascript:void(0);" class="btn mr30"
 						onclick="sign_up();">报名</a>
                 <?php }?>
-				<input type="hidden" name="id" value="<?php echo $info['id'];?>" />
-					<input type="hidden" name="type" value="4">
+				<input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
+					<input type="hidden" name="type" value="3">
                  <?php if($is_collect){?>
                 <a style="color: #000; font-size: 20px;">已收藏</a>
                 <?php }else{?>
@@ -55,7 +63,7 @@
 function collection(type){
 	tid = $("#tid").val();
 	if(!tid){
-		alert('您没有选择要收藏的老师');	
+		alert('您没有选择要收藏的活动');	
 	}
 	if(!type){
 		alert('参数错误，请刷新页面');	

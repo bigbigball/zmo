@@ -11,7 +11,7 @@
         <?php }else{?>
          <img src="/zmo/static/img/avastarTmp.jpg" alt="" title="" />
         <?php }?>
-        <div class="shadow"></div>
+        <!--<div class="shadow"></div>-->
 		<!--a href="" class="uploadBtn">上传头像</a-->
 	</div>
 	<div class="info">

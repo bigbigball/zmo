@@ -15,16 +15,9 @@
 				</div>
 				<div class="word">微信公共帐号</div>
 			</div>
-			<div class="weixin ml40">
-				<div>
-					<img src="/zmo/static/img/wexin.png" />
-				</div>
-				<div class="word">微信公共帐号</div>
-			</div>
 		</div>
 	</div>
-	<div class="site_info">Copyright2014-2015 知识有家 zhishiyoujia.com All
-		rights reserved.京I</div>
+	<div class="site_info">Copyright2014-2015 知识有家 zhishiyoujia.com All rights reserved.京I</div>
 </div>
 <!--反馈弹框-->
 <div class="pop_box" id="pop_feedback" style="display: none">
