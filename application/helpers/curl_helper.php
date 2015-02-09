@@ -9,14 +9,7 @@ function curl_exec_follow($ch, &$maxredirect = null) {
 
     $mr = $maxredirect === null ? 5 : intval($maxredirect);
 
-    if (filter_var(ini_get('open_basedir'), FILTER_VALIDATE_BOOLEAN) === false 
-            && filter_var(ini_get('safe_mode'), FILTER_VALIDATE_BOOLEAN) === false) 
     {
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $mr > 0);
-        curl_setopt($ch, CURLOPT_MAXREDIRS, $mr);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    } else {
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         if ($mr > 0) {
             $original_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
