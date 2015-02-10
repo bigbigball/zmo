@@ -11,9 +11,15 @@
 		<div class="clearfix code">
 			<div class="weixin">
 				<div>
-					<img src="/zmo/static/img/wexin.png" />
+					<img src="/zmo/static/img/weixin.jpg" />
 				</div>
 				<div class="word">微信公共帐号</div>
+			</div>
+			<div class="weixin ml40">
+				<div>
+					<img src="/zmo/static/img/weibo.jpg" />
+				</div>
+				<div class="word">微博公共帐号</div>
 			</div>
 		</div>
 	</div>

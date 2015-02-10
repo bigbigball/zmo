@@ -38,7 +38,7 @@
     	<div class="introduction_block clearfix introduction_line">
 			<div class="left ibimg">
 				<div>
-					<img src="/zmo/static/tmp/list.png" />
+					<img src="/zmo/static/tmp/list.png" width="250px"/>
 				</div>
 				<div class="ibimg_tag">视频课程</div>
 			</div>
@@ -46,7 +46,7 @@
 				<div class="ititle"><?php echo $v['title'];?></div>
 				<div class="iteachter mt20">导师：<?php echo $info['name'];?></div>
 				<div class="ctag clearfix mt10">
-					<div class="left">标签：</div>
+					<div class="left ttag">标签：</div>
                     <?php $tags = explode('|' , $v['tag']);if(!empty($tags)){foreach($tags as $tk => $tv){?>
                     <div class="left ctags"><?php echo $tv;?></div>
                     <?php }}?>
@@ -58,10 +58,11 @@
 					价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{echo '免费';}?></span>
 				</div>
 				<div class="clearfix">
-					<div class="ibutton mt15 left">
-						<a href="javascrript:void(0);">播放</a>
+						<div class="ibutton mt20 left">
+							<a href="javascript:void(0);"
+								onclick="buy_lesson('<?php echo $v['id'];?>');">购买</a>
+						</div>
 					</div>
-				</div>
 			</div>
 		</div>
         <?php }}?>
@@ -134,5 +135,12 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script>
+function buy_lesson(id){
+	window.location.href="<?php echo site_url('lesson/lesson/info/" +id+ "')?>";	
+}
+$(document).ready(function(){
 
+});
+</script>
 <?php $this->load->view('public/footer.php');?>

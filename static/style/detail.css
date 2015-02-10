@@ -45,7 +45,78 @@
 
 
 
+/*导师详情页面*/
+.ibimg_tag {
+position: absolute;
+top: 10px;
+left: 10px;
+background-color: #01a8ee;
+padding: 3px 10px;
+color: #fff;
+font-size: 20px;
+}
+.ibimg{
+position: relative;
+}
+.iinfo{
+width: 609px;
 
+margin-left: 270px;
+margin-top: -190px;
+}
+.introduction_block{
+border-bottom: 1px solid #e6e6e6;
+padding-bottom: 30px;
+margin-top: 30px;
+height: 280px;
+}
+.ititle{
+color: #000;
+font-size: 24px;
+}
+.iteachter {
+color: #666;
+font-size: 16px;
+}
+.ctags {
+margin-left: 5px;
+background-color: #f6f6f6;
+padding: 0px 5px;
+font-size: 16px;
+}
+.ttag{
+font-size: 16px;
+}
+.idesc {
+color: #666;
+font-size: 16px;
+overflow: hidden;
+}
+.iprice {
+color: #666;
+font-size: 16px;
+}
+.price {
+color: #01a8ee;
+}
+.ibutton {
+background: url(../img/listbuttonbg.png) no-repeat scroll center center;
+width: 270px;
+height: 48px;
+font-size: 16px;
+line-height: 48px;
+text-align: center;
+}
+.ibutton a {
+color: #fff;
+font-size: 16px;
+height: 48px;
+line-height: 48px;
+font-weight: bold;
+background: url(../img/sanjiao.png) no-repeat scroll 175px center;
+width: 270px;
+display: block;
+}
 
 
 

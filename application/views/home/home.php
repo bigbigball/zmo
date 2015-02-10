@@ -174,7 +174,7 @@
                 </div>
                 <div class="teacher_name">
                     <div><?php echo $v['name'];?></div>
-                    <div class="teacher_desc"><?php echo $v['occ'];?></div>
+                    <div class="teacher_desc" style="margin-left:-10px"><?php echo $v['occ'];?></div>
                 </div>
             </div>
 			</a>

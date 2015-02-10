@@ -24,7 +24,7 @@
         </div>
 			<div class="clearfix" style="margin-top: 10px;">
 				<div class="header_logo left">
-					<img src="/zmo/static/img/logo.png" />
+					<a href="/zmo/index.php/home/index.html"><img src="/zmo/static/img/logo.png" /></a>
 				</div>
 				<div class="header_menu_list right">
 					<ul class="clearfix top_menu">

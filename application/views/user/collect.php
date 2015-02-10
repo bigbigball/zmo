@@ -13,10 +13,10 @@ if (! empty ( $otype )) {
 		case 2 :
 			echo '收藏的课程';
 			break;
-		case 3 :
+		case 4 :
 			echo '收藏的活动';
 			break;
-		case 4 :
+		case 5 :
 			echo '收藏的导师';
 			break;
 	}

@@ -10,7 +10,7 @@
 				method="post" enctype="multipart/form-data" id="post_form">
 				<div class="action">
 					<div class="action_info">
-						<div class="action_title">使用邮箱登陆</div>
+						<div class="action_title">使用邮箱、手机登陆</div>
 						<div class="action_text">
 							<div>
 								<input type="text" placeholder="知家注册邮箱" name="mail" id="mail" />

@@ -1,22 +1,17 @@
 <?php
 function curl_exec_follow($ch, &$maxredirect = null) {
-
     // we emulate a browser here since some websites detect
     // us as a bot and don't let us do our job
     $user_agent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.5)".
         " Gecko/20041107 Firefox/1.0";
     curl_setopt($ch, CURLOPT_USERAGENT, $user_agent );
-
     $mr = $maxredirect === null ? 5 : intval($maxredirect);
-
     {
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         if ($mr > 0) {
             $original_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
             $newurl = $original_url;
-
             $rch = curl_copy_handle($ch);
-
             curl_setopt($rch, CURLOPT_HEADER, true);
             curl_setopt($rch, CURLOPT_NOBODY, true);
             curl_setopt($rch, CURLOPT_FORBID_REUSE, false);
@@ -30,7 +25,6 @@ function curl_exec_follow($ch, &$maxredirect = null) {
                     if ($code == 301 || $code == 302) {
                         preg_match('/Location:(.*?)\n/i', $header, $matches);
                         $newurl = trim(array_pop($matches));
-
                         // if no scheme is present then the new url is a
                         // relative path and thus needs some extra care
                         if(!preg_match("/^https?:/i", $newurl)){
@@ -41,15 +35,12 @@ function curl_exec_follow($ch, &$maxredirect = null) {
                     }
                 }
             } while ($code && --$mr);
-
             curl_close($rch);
-
             if (!$mr) {
                 if ($maxredirect === null)
                     trigger_error('Too many redirects.', E_USER_WARNING);
                 else
                     $maxredirect = 0;
-
                 return false;
             }
             curl_setopt($ch, CURLOPT_URL, $newurl);
@@ -57,7 +48,6 @@ function curl_exec_follow($ch, &$maxredirect = null) {
     }
     return curl_exec($ch);
 }
-
 if (! function_exists ( 'callHttpCommon' )) {
 	function callHttpCommon($url, $type = 'GET', $useragent = '', $params = null, $header = '', $encoding = '', $referer = '', $cookie = '') {
 		$ch = curl_init ();
@@ -171,7 +161,6 @@ if (! function_exists ( 'callHttpPost' )) {
 		return $result;
 	}
 }
-
 if (! function_exists ( 'callHttpGet' )) {
 	function callHttpGet($url, $params = null) {
 		$post_url = '';
@@ -187,10 +176,8 @@ if (! function_exists ( 'callHttpGet' )) {
 		return $result;
 	}
 }
-
 if (! function_exists ( 'callHttpRequest' )) {
 	function callHttpRequest($url, $params = array()) {
 		return callHttpPost ( $url, $params );
 	}
 }
-

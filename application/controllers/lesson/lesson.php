@@ -48,7 +48,6 @@ class Lesson extends CI_Controller {
 		if (! empty ( $info )) {
 			$is_join = $this->lesson_model->check_join ( $id );
 			$data ['info'] = $info;
-			$data ['is_collect'] = $this->lesson_model->check_collect ( $id );
 			$data ['is_join'] = $is_join;
 			$this->load->view ( 'lesson/info', $data );
 		} else {
