@@ -91,7 +91,7 @@ class Lesson_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , content,title,guest_id ,stime,etime ,address, guest_id , is_price , price,tag_info as tag,address,desc,content' );
+		$this->db->select ( 'id , content,title,guest_id ,stime,etime ,address, guest_id ,img, is_price , price,tag_info as tag,address,desc,content' );
 		$this->db->from ( 'lesson' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ();
@@ -131,5 +131,19 @@ class Lesson_model extends CI_Model {
 		if ($query->num_rows () > 0) {
 			return true;
 		}
+	}
+	function check_collect($id) {
+		if (empty ( $id ) || empty ( $_SESSION ['uid'] )) {
+			return false;
+		}
+		$this->db->select ( 'id' );
+		$this->db->where ( 'relation_id', $id );
+		$this->db->where ( 'type', '2' );
+		$this->db->where ( 'user_id', $_SESSION ['uid'] );
+		$query = $this->db->get ( 'collect' );
+		if ($query->num_rows () > 0) {
+			return true;
+		}
+		return false;
 	}
 }

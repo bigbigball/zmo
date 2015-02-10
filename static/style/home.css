@@ -8,6 +8,7 @@
 .cmlunbo .button .left_button{height:67px; width:67px; float:left; background:url(../img/left.png) no-repeat scroll center left; cursor:pointer;}
 .cmlunbo .button .right_button{height:67px; width:67px; float:right; background:url(../img/right.png) no-repeat scroll center right; cursor:pointer;}
 
+.ctldiv{display: -webkit-box;text-overflow: ellipsis;overflow : hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
 
 .cmbody .block{ width:1003px;}
 .cmbody .block .title{ margin:40px auto;}
@@ -23,7 +24,7 @@
 .cmbody .block .info .bigimg{ background:url(../tmp/tab1.png) no-repeat scroll top center; height:384px; position:relative;}
 .cmbody .block .info .bigimg .desc{ background:url(../img/imgbutton.png) no-repeat scroll right bottom; height:50px; width:272px; position:absolute; bottom:9%; right:5%; cursor:pointer;}
 .cmbody .block .info .imgtab{ width:1003px; margin:1px auto 0px;}
-.cmbody .block .info .imgtab .imgleft{ margin-right:1px;}
+.cmbody .block .info .imgtab .imgleft{ margin-right:2px;}
 .cmbody .block .info .imgtab .imgblock{ float:left; position:relative; cursor:pointer;}
 .cmbody .block .info .imgtab .imgblock .tabimg img{display:block; width:248px; height:160px}
 .cmbody .block .info .imgtab .imgblock .tabtitle{ position:absolute; bottom:0px; left:0px;}
@@ -42,7 +43,7 @@
 .cmbody .block .active{}
 .cmbody .block .active .active_block{ float:left; cursor:pointer;}
 .cmbody .block .active .acitve_relative{ position:relative;}
-.cmbody .block .active .activelr{ margin:0 2px;}
+.cmbody .block .active .activelr{ margin:0 3px;}
 .cmbody .block .active .active_info{ position:absolute; left:10px; bottom:10px; color:#fff; }
 .cmbody .block .active .active_info .active_title{ font-size:22px;}
 .cmbody .block .active .active_info  .active_desc{ margin-top:10px; font-size:16px; height:30px; line-height:30px;}

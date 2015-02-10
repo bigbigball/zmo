@@ -216,20 +216,29 @@ class User extends CI_Controller {
 		}
 		$post ['otype'] = $otype;
 		$this->load->model ( 'collection_model', '', true );
-		$collect = $this->collection_model->center ( $post );
-		$relation_id = $collect[0]['relation_id'];
+		$collects = $this->collection_model->center ( $post );
+		$infos = array();
 		if ($otype == 2) {
-			$info = $this->lesson_model->getinfo($relation_id);
+			foreach($collects as $collect){
+				$relation_id = $collect['relation_id'];
+				$infos[] = $this->lesson_model->getinfo($relation_id);
+			}
 		} else if ($otype == 3) {
-			$info = $this->active_model->getinfo($relation_id);
+			foreach($collects as $collect){
+				$relation_id = $collect['relation_id'];
+				$infos[] = $this->active_model->getinfo($relation_id);
+			}
 		} else if ($otype == 4) {
-			$info = $this->teacher_model->getinfo($relation_id);
+			foreach($collects as $collect){
+				$relation_id = $collect['relation_id'];
+				$infos[] = $this->teacher_model->getinfo($relation_id);
+			}
 		}
 		
 		$user_info = $this->user_model->get_user_info ();
 		$data ['user_info'] = $user_info;
 		$data ['action'] = 'collect';
-		$data ['info'] = $info;
+		$data ['infos'] = $infos;
 		$data ['otype'] = $otype;
 		
 		$this->load->view ( 'user/collect', $data );

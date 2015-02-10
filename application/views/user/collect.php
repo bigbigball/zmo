@@ -13,10 +13,10 @@ if (! empty ( $otype )) {
 		case 2 :
 			echo '收藏的课程';
 			break;
-		case 4 :
+		case 3 :
 			echo '收藏的活动';
 			break;
-		case 5 :
+		case 4 :
 			echo '收藏的导师';
 			break;
 	}
@@ -26,7 +26,22 @@ if (! empty ( $otype )) {
 ?></div>
 </div>
 <ul>
-<?php if(!empty($info) && isset($info['portrait'])){?>
+<?php if(!empty($infos) && $otype == 2){ foreach($infos as $info){?>
+	<li style="height: 138px">
+	<div class="clearfix info"
+		style="height: 162px; line-height: 162px; text-align: center;">
+	<div class="name" style="width: 610px; margin-right: 0px;">
+	
+		<div class="left productImg">
+		<img width="121px" height="121px" src="<?php echo $info['img']?>"/>
+	</div>
+	<?php echo $info['title']?><br/>
+		<div class="ctldiv"><?php echo $info['content']?></div>
+	</div>
+	<div class="status"><a href="<?php echo site_url('lesson/lesson/info/'.$info['id']);?>" class="btn">去查看</a></div>
+	</div>
+	</li>
+<?php }}else if(!empty($infos) && $otype == 4){ foreach($infos as $info){?>
 	<li style="height: 138px">
 	<div class="clearfix info"
 		style="height: 162px; line-height: 162px; text-align: center;">
@@ -36,26 +51,26 @@ if (! empty ( $otype )) {
 		<img height="121px" src="<?php echo $info['portrait']?>"/>
 	</div>
 	<?php echo $info['name']?><br/>
-		<small><?php echo $info['desc']?></small>
+		<div class="ctldiv"><span style="font-family:微软雅黑;font-size:14px;line-height:28px;background-color:#F7F7F7;"><?php echo $info['desc']?></span></div>
 	</div>
 	<div class="status"><a href="<?php echo site_url('teacher/teacher/info/'.$info['id']);?>" class="btn">去查看</a></div>
 	</div>
 	</li>
-	<?php }else if(!empty($info) && isset($info['title'])){?>
+<?php }}else if(!empty($infos) && $otype == 3){ foreach($infos as $info){?>
 	<li style="height: 138px">
 	<div class="clearfix info"
 		style="height: 162px; line-height: 162px; text-align: center;">
 	<div class="name" style="width: 610px; margin-right: 0px;">
 		<div class="left productImg">
-		<img height="121px" src="<?php echo $info['img']?>"/>
+		<img width="121px" height="121px" src="<?php echo $info['img']?>"/>
 		</div>
 		<?php echo $info['title']?><br/>
-		<small><?php echo $info['desc']?></small>
+		<div class="ctldiv"><span style="font-family:微软雅黑;font-size:14px;line-height:28px;background-color:#F7F7F7;"><?php echo $info['desc']?></span></div>
 	</div>
 	<div class="status"><a href="<?php echo site_url('active/active/info/'.$info['id']);?>" class="btn">去查看</a></div>
 	</div>
 	</li>
-	<?php }else{?>
+	<?php }}else{?>
 	<li
 		style="height: 38px; text-align: center; line-height: 38px; font-size: 18px;">
 	没有相关内容</li>
