@@ -98,10 +98,17 @@ switch (date ( 'w', $info ['etime'] )) {
                     <a href="javascript:void(0);" class="btn"
 						onclick="sign_up();">报名</a>
                     <?php }?>
+                    <input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
+                    <?php if($is_collect){?>
+                <a style="color: #000; font-size: 20px;">已收藏</a>
+                <?php }else{?>
+                <a href="javascript:void(0);" class="btn"
+						style="margin-top: 15px;" onclick="collection('2');">收藏</a>
+                <?php }?>
                 </div>
 			</div>
 		</form>
-		<img src="/zmo/static/tmp/list.png" title="" alt="" class="right ml40" />
+		<img width='400px' src="<?php echo $info['img']?>" title="" alt="" class="right" />
 	</div>
     <?php if(!empty($info['tutor'])){?>
 	<div class="item-title mt60">
@@ -156,6 +163,27 @@ switch (date ( 'w', $info ['etime'] )) {
 	<!--评论-->
 </div>
 <script>
+function collection(type){
+	tid = $("#tid").val();
+	if(!tid){
+		alert('您没有选择要收藏的课程');	
+	}
+	if(!type){
+		alert('参数错误，请刷新页面');
+	}
+	if(tid && type){
+		$.ajax({
+			type: "POST",
+		    url: "<?php echo site_url('collection/collect')?>",
+		    data: "type=" + type + "&id=" + tid,
+		    success: function(msg){
+			  var info = eval("(" + msg + ")");
+			  alert(info.msg);
+			 window.location.reload();
+		    }	
+		});	
+	}
+}
 function comment_submit(){
 	var comment_val = $("#comment").val();
 	if(comment_val && comment_val != '不吐不快'){
