@@ -57,13 +57,11 @@
         	<div class="video_img clearfix">
 				<?php if(!empty($video)){foreach($video as $k => $v){?>
                 <div class="video <?php if($k == 1){ echo 'imglr';}?>">
-                	<div class="videoimg"><a href="<?php echo site_url('video/video/info' , array('id' => $v['id']))?>">
-                        <?php if(false){//!empty($v['img'])?>
-                        <img src="<?php echo $v['img'];?>" width="325px"/>
-                        <?php }else{?>
-                        <img src="/static/tmp/video1.png" width="325px"/>
-                        <?php }?>
-                        </a></div>
+                	<div class="videoimg">
+                        <a href="<?php echo site_url('video/video/info' , array('id' => $v['id']))?>">
+                            <img src="<?php echo $v['img'];?>" width="325px"/>
+                        </a>
+                    </div>
                     <div class="videoname"><?php echo $v['title'];?></div>
                 </div>
                 <?php }}?>

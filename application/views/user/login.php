@@ -70,12 +70,20 @@ function bd_login(){
 function login(){
 	var mail = $("#mail").val();
 	var pwd = $("#pwd").val();
+
 	var mail_reg = /^[-,_,A-Z,a-z,0-9]+@([_,A-Z,a-z,0-9]+\.)+[A-Za-z0-9]{2,3}$/;
 	var mail_reg = new RegExp(mail_reg); 
-	if(mail == '知家注册邮箱' || !mail_reg.test(mail)){
-		alert('请填写您正确的邮箱');
-		return false;	
+    var is_mail = (mail != '知家注册邮箱' && mail_reg.test(mail));
+
+    phone_reg = /^1[3,5,7,8]\d{9}$/;
+    phone_reg = new RegExp(phone_reg);
+    var is_phone = (mail != '知家注册邮箱' && phone_reg.test(mail));
+
+	if(!is_phone && !is_mail){
+		alert('请填写您正确的邮箱或手机号');
+		//return false;	
 	}
+
 	if(pwd == '密码'){
 		alert('请填写您的密码');
 		return false;	

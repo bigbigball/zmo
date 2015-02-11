@@ -119,7 +119,7 @@ class User_model extends CI_Model {
 		} else {
 			$this->db->select ( 'id , nick_name , email , mobile ,status ,type' );
 			$this->db->from ( 'user' );
-			$this->db->where ( 'email =', $parmes ['mail'] );
+			$this->db->where ( "(email='{$parmes['mail']}' or mobile='{$parmes['mail']}')" );
 			$this->db->where ( 'passwd =', md5 ( $parmes ['pwd'] ) );
 			$this->db->limit ( 1 );
 			$query = $this->db->get ();
