@@ -33,7 +33,7 @@
 .cmbody .block .info .imgtab .imgblock .tabword{ position:absolute; top:33%; left:20%; color:#fff; font-size:20px;}
 
 .cmbody .block .info .video_img{}
-.cmbody .block .info .video_img .imglr{ margin:0px 2px;}
+.cmbody .block .info .video_img .imglr{ margin-left:3px;margin-right:3px;}
 .cmbody .block .info .video_img .video{ float:left; width:33%;}
 .cmbody .block .info .video_img .video .videoimg{position:relative; display:block}
 .cmbody .block .info .video_img .video .videoimg img{display:block; width:332px; height:180px}

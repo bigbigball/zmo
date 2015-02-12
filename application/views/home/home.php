@@ -21,7 +21,11 @@
         </div>
         <div class="info">
             <?php $first = array_shift($lesson);?>
+            <input id="bigimg_path" type="hidden" value="<?php if(!empty($first))echo $first['img']?>"></input>
             <div class="bigimg">
+            <a href="<?php echo site_url('lesson/lesson/info/'.$first['id'])?>">
+            <span class="bigimgtext"><div class="bigimgspan">第1期</div><?php echo $first['title']?></span>
+            </a>
                 <a href="<?php echo site_url('lesson/lesson/info/'.$first['id'])?>"><div class="desc"></div></a>
             </div>
             <div class="imgtab clearfix">
@@ -36,7 +40,7 @@
                     <?php }?>
                     </div>
                     <div class="tabtitle clearfix">
-                        <div class="left number">第<?php echo $k + 1;?>期</div>
+                        <div class="left number">第<?php echo $k + 2;?>期</div>
                         <div class="left content_title"><?php echo $v['title'];?></div>
                     </div>
                     </a>
@@ -213,4 +217,8 @@
 </div>
 <?php $this->load->view('public/footer.php');?>
 <script>
+$(document).ready(function(){
+	var path = $("#bigimg_path").val();
+	$(".bigimg").css("background-image","url(" + path + ")");
+});
 </script>
