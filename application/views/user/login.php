@@ -25,7 +25,7 @@
 								<div class="rember_text left">记住我</div>
 							</div>
 							<div class="right">
-								<a href="javascript:void(0);">忘记密码？</a>
+								<a href="<?php echo site_url('user/user/find_pwd');?>"">忘记密码？</a>
 							</div>
 						</div>
 						<div class="action_do clearfix">
@@ -81,7 +81,7 @@ function login(){
 
 	if(!is_phone && !is_mail){
 		alert('请填写您正确的邮箱或手机号');
-		//return false;	
+		return false;	
 	}
 
 	if(pwd == '密码'){

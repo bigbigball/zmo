@@ -412,4 +412,35 @@ class User extends CI_Controller {
 		}
 		return false;
 	}
+
+	function find_pwd() {
+        if ($this->check_login ()) {
+            err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );
+        }
+
+        $post = $this->input->post ();
+        if (empty ( $post )) {
+            $this->load->view ( 'user/find_pwd' );
+        } else {
+            $this->form_validation->set_rules ( 'p_phone', 'p_phone', 'required' );
+            $this->form_validation->set_rules ( 'p_pwd', 'p_pwd', 'required' );
+            $this->form_validation->set_rules ( 'p_dy_code', 'p_dy_code', 'required' );
+            if ($this->form_validation->run () == FALSE) {
+                err_msgs ( '参数错误', site_url ( 'user/user/find_pwd' ) );
+            }
+
+            $info = $this->user_model->find_pwd ( $post );
+            switch ($info ['ret']) {
+                case 200 :
+                    msgs ( '修改成功', site_url ( 'user/user/login' ) );
+                    break;
+                case 305 :
+                    err_msgs ( '您的手机验证码输入错误或已失效', site_url ( 'user/user/find_pwd' ) );
+                    break;
+                case 205 :
+                    err_msgs ( '您的手机号还没有注册，请注册', site_url ( 'user/user/regist' ) );
+                    break;
+            }
+        }
+    }
 }
