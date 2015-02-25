@@ -219,19 +219,25 @@ class User extends CI_Controller {
 		$collects = $this->collection_model->center ( $post );
 		$infos = array();
 		if ($otype == 2) {
-			foreach($collects as $collect){
-				$relation_id = $collect['relation_id'];
-				$infos[] = $this->lesson_model->getinfo($relation_id);
+			if(!empty($collects)){
+				foreach($collects as $collect){
+					$relation_id = $collect['relation_id'];
+					$infos[] = $this->lesson_model->getinfo($relation_id);
+				}
 			}
 		} else if ($otype == 3) {
-			foreach($collects as $collect){
-				$relation_id = $collect['relation_id'];
-				$infos[] = $this->active_model->getinfo($relation_id);
+			if(!empty($collects)){
+				foreach($collects as $collect){
+					$relation_id = $collect['relation_id'];
+					$infos[] = $this->active_model->getinfo($relation_id);
+				}
 			}
 		} else if ($otype == 4) {
-			foreach($collects as $collect){
-				$relation_id = $collect['relation_id'];
-				$infos[] = $this->teacher_model->getinfo($relation_id);
+			if(!empty($collects)){
+				foreach($collects as $collect){
+					$relation_id = $collect['relation_id'];
+					$infos[] = $this->teacher_model->getinfo($relation_id);
+				}
 			}
 		}
 		
