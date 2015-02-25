@@ -66,9 +66,11 @@ class User_model extends CI_Model {
 			$vcode = $query->row_array ();
 		}
 		$this->db->select ( 'id' );
-		$this->db->where ( 'stype', '1' );
+		//$this->db->where ( 'stype', '1' );
 		$this->db->where ( 'code', $post ['p_code'] );
-		$this->db->where ( 'expire >', time () );
+		//$this->db->where ( 'expire >', time () );
+		$this->db->where ( "(expire='" .time(). "' or expire='0')" );
+
 		$query = $this->db->get ( 'code' );
 		if ($query->num_rows () <= 0) {
 			return array (

@@ -65,7 +65,7 @@ class User extends CI_Controller {
 			case 304 :
 				err_msgs ( '您的邀码请已使用或者已过期', site_url ( 'user/user/regist' ) );
 				break;
-			case 304 :
+			case 305 :
 				err_msgs ( '您的手机验证码输入错误或已失效', site_url ( 'user/user/regist' ) );
 				break;
 			case 205 :
