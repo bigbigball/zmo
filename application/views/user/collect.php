@@ -35,8 +35,7 @@ if (! empty ( $otype )) {
 		<div class="left productImg">
 		<img width="121px" height="121px" src="<?php echo $info['img']?>"/>
 	</div>
-	<?php echo $info['title']?><br/>
-		<div class="ctldiv"><?php echo $info['content']?></div>
+	<?php echo $info['title']?>
 	</div>
 	<div class="status"><a href="<?php echo site_url('lesson/lesson/info/'.$info['id']);?>" class="btn">去查看</a></div>
 	</div>
@@ -50,8 +49,7 @@ if (! empty ( $otype )) {
 		<div class="left productImg">
 		<img height="121px" src="<?php echo $info['portrait']?>"/>
 	</div>
-	<?php echo $info['name']?><br/>
-		<div class="ctldiv"><span style="font-family:微软雅黑;font-size:14px;line-height:28px;background-color:#F7F7F7;"><?php echo $info['desc']?></span></div>
+	<?php echo $info['name']?>
 	</div>
 	<div class="status"><a href="<?php echo site_url('teacher/teacher/info/'.$info['id']);?>" class="btn">去查看</a></div>
 	</div>
@@ -64,8 +62,7 @@ if (! empty ( $otype )) {
 		<div class="left productImg">
 		<img width="121px" height="121px" src="<?php echo $info['img']?>"/>
 		</div>
-		<?php echo $info['title']?><br/>
-		<div class="ctldiv"><span style="font-family:微软雅黑;font-size:14px;line-height:28px;background-color:#F7F7F7;"><?php echo $info['desc']?></span></div>
+		<?php echo $info['title']?>
 	</div>
 	<div class="status"><a href="<?php echo site_url('active/active/info/'.$info['id']);?>" class="btn">去查看</a></div>
 	</div>
