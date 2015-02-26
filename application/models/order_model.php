@@ -210,7 +210,7 @@ class Order_model extends CI_Model {
 			return false;
 		}
 		$this->db->select ( '*' );
-		$this->db->where ( 'id', $oid );
+		$this->db->where ( 'order_id', $oid );
 		$query = $this->db->get ( 'order_goods' );
 		if ($query->num_rows () > 0) {
 			$info = $query->row_array ();

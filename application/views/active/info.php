@@ -31,7 +31,7 @@
 						onclick="sign_up();">报名</a>
                 <?php }?>
 				<input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
-					<input type="hidden" name="type" value="3">
+					<input type="hidden" name="type" value="4">
                  <?php if($is_collect){?>
                 <a style="color: #000; font-size: 20px;">已收藏</a>
                 <?php }else{?>
