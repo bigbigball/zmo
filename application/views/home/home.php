@@ -24,7 +24,7 @@
             <input id="bigimg_path" type="hidden" value="<?php if(!empty($first))echo $first['img']?>"></input>
             <div class="bigimg">
             <a href="<?php echo site_url('lesson/lesson/info/'.$first['id'])?>">
-            <span class="bigimgtext"><div class="bigimgspan">第1期</div><?php echo $first['title']?></span>
+            <span class="bigimgtext"><div class="bigimgspan">第<?php if(!empty($first))echo $first['sequence']?>期</div><?php echo $first['title']?></span>
             </a>
                 <a href="<?php echo site_url('lesson/lesson/info/'.$first['id'])?>"><div class="desc"></div></a>
             </div>
@@ -40,7 +40,7 @@
                     <?php }?>
                     </div>
                     <div class="tabtitle clearfix">
-                        <div class="left number">第<?php echo $k + 2;?>期</div>
+                        <div class="left number">第<?php echo $v['sequence']?>期</div>
                         <div class="left content_title"><?php echo $v['title'];?></div>
                     </div>
                     </a>

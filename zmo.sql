@@ -294,6 +294,7 @@ CREATE TABLE `z_goods_car` (
 DROP TABLE IF EXISTS `z_lesson`;
 CREATE TABLE `z_lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sequence` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `tag_info` tinytext NOT NULL,
