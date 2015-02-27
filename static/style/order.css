@@ -106,7 +106,7 @@
 .bindPhone .phone{ width: 400px; }
 .bindPhone .code{ width:200px; }
 .bindPhone .codeNumber{ display:inline-block; padding:0; text-align:center; width:190px; background:#e8e8e8; margin-left:5px; }
-.bindPhone .submit{ padding:0; background:#01a8ee; width:415px; height:60px; line-height:60px; color:#fff; font:normal 20px/56px "Microsoft Yahei"; cursor:pointer}
+.bindPhone .submit{ padding:0; background:#01a8ee; width:425px; height:60px; line-height:60px; font-size:26px; color:#fff; }
 
 /* 绑定手机成功 */
 .bindPhoneSuccess{ padding:15px 0 0 35px; text-align:center; width:750px; }
@@ -131,6 +131,7 @@
 .passwordEdit .select li:hover{ background:#cfcfcf; color:#fff; }
 .passwordEdit .code{ width:200px; }
 .passwordEdit .codeNumber{ display:inline-block; padding:0; text-align:center; width:190px; background:#e8e8e8; margin-left:5px; }
+.passwordEdit .password{ width:400px; }
 .passwordEdit .submit{ padding:0; background:#01a8ee; width:425px; height:60px; line-height:60px; font-size:26px; color:#fff; }
 
 /* 密码管理-验证成功 */
@@ -158,8 +159,9 @@
 .emailValidate{ padding:15px 0 0 35px; width:750px; }
 .emailValidate .emailBox{ width:400px; }
 .emailValidate .codeNumber{ display:inline-block; padding:0; text-align:center; width:190px; background:#e8e8e8; margin-left:5px; }
+.emailValidate .code{ width:200px; }
 .emailValidate .codeBox{ width:400px; }
-.emailValidate .submit{ padding:0; background:#01a8ee; width:415px; height:60px; color:#fff; font:20px/56px "Microsoft Yahei"; display:block; margin:auto}
+.emailValidate .submit{ padding:0; background:#01a8ee; width:425px; height:60px; line-height:60px; font-size:26px; color:#fff; }
 .emailValidate .successTip{ color:#1abc9c; font-size:30px; text-align:center}
 .emailValidate .failureTip{ color:#403f3d; font-size:30px; text-align:center}
 .emailValidate img{display:block; width:100px; margin:80px auto 50px}

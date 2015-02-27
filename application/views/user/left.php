@@ -28,13 +28,13 @@
             <li><a href="<?php echo site_url('user/user/sms',array('action' => 'sms_order'));?>">订单消息</a></li>
             <li><a href="<?php echo site_url('user/user/sms',array('action' => 'sms_push'));?>">推送消息</a></li>
         </ul>
-    </li>
+    </li-->
     <li <?php if($action == 'other'){?>class="active"<?php }?>>
-        <h3>其他</h3>
+        <h3>个人信息</h3>
         <ul>
             <li><a href="<?php echo site_url('user/user/other',array('action' => 'bind_phone'));?>">绑定手机</a></li>
-            <li><a href="<?php echo site_url('user/user/other',array('action' => 'verify_mail'));?>">验证邮箱</a></li>
-            <li><a href="<?php echo site_url('user/user/other',array('action' => 'passwd_manage'));?>">密码管理</a></li>
+            <li><a href="<?php echo site_url('user/user/other',array('action' => 'verify_mail'));?>">绑定邮箱</a></li>
+            <li><a href="<?php echo site_url('user/user/other',array('action' => 'passwd_manage'));?>">修改密码</a></li>
         </ul>
-    </li-->
+    </li>
 </ul>
