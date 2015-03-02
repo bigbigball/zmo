@@ -27,6 +27,25 @@ class Pf extends CI_Controller {
 				'ret' => 500 
 		) ) );
 	}
+	public function send_email_code() {
+		$this->form_validation->set_rules ( 'email', 'email', 'required' );
+		if ($this->form_validation->run () == FALSE) {
+			exit ( json_encode ( array (
+					'ret' => 400,
+					'msg' => '参数错误' 
+			) ) );
+		}
+		$post = $this->input->post ();
+		$info = $this->pf_model->send_email_rand_code ( $post );
+		if ($info) {
+			exit ( json_encode ( array (
+					'ret' => 200 
+			) ) );
+		}
+		exit ( json_encode ( array (
+				'ret' => 500 
+		) ) );
+	}
 }
 
 /* End of file welcome.php */

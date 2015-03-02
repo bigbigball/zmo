@@ -10,13 +10,36 @@
 				method="post" enctype="multipart/form-data" id="post_form">
 				<div class="action tab">
 					<div class="reg_type tab-title clearfix">
-						<div data-for="#mail" class="left ckleft" ck="1">找回密码</div>
+						<div data-for="#phone" class="left ckleft" ck="1">手机找回密码</div>
+						<div data-for="#mail" class="left " ck="2">邮箱找回密码</div>
 					</div>
 					<div class="tab-content">
-						<div id="mail" class="tab-pane active">
+						<div id="phone" class="tab-pane active">
 							<div class="reg_text">
 								<div>
 									<input type="text" value="手机号" id="p_phone" name="p_phone" />
+								</div>
+								<div style="margin: 10px 0px;">
+									<input type="password" id="p_pwd" name="p_pwd" placeholder="密码" />
+								</div>
+								<div class="clearfix mt10 phone_code">
+									<div class="left">
+										<input type="text" value="动态码" class="phone_code_text"
+											id="p_dy_code" name="p_dy_code">
+									</div>
+									<div class="left">
+										<a href="javascript:void(0);" class="phone_code_button">获取手机动态码</a>
+									</div>
+								</div>
+								<div style="margin: 10px 0px;">
+                                    <br>
+								</div>
+							</div>
+						</div>
+						<div id="mail" class="tab-pane">
+							<div class="reg_text">
+								<div>
+									<input type="text" value="电子邮箱" id="p_phone" name="p_phone" />
 								</div>
 								<div style="margin: 10px 0px;">
 									<input type="password" id="p_pwd" name="p_pwd" placeholder="密码" />
@@ -48,6 +71,19 @@
 </div>
 </div>
 <script>
+	$(".reg_type div").each(function(){
+		$(this).click(function(){
+			$(this).addClass("ckleft").siblings().removeClass('ckleft');
+			var id = $(this).attr('data-for');
+			$(id).addClass('active').siblings('.tab-pane').removeClass('active');
+			if($(this).attr('ck') == 1){
+				$("#post_form").attr("action" , "<?php echo site_url('user/user/regist')?>")	;
+			}else if($(this).attr('ck') == 2){
+				$("#post_form").attr("action" , "<?php echo site_url('user/user/phone_regist')?>")	;
+			}
+		});	
+	});
+
 function find_pwd(){
 	var phone = $("#p_phone").val();
 	var pwd = $("#p_pwd").val();

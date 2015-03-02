@@ -23,9 +23,6 @@
 								<div class="mt20 mb20">
 									<input type="password" id="m_pwd" name="m_pwd" placeholder="密码" />
 								</div>
-								<div>
-									<input type="text" value="邀请码" id="m_code" name="m_code" />
-								</div>
 							</div>
 						</div>
 						<div id="phone" class="tab-pane">
@@ -35,9 +32,6 @@
 								</div>
 								<div style="margin: 10px 0px;">
 									<input type="password" id="p_pwd" name="p_pwd" placeholder="密码" />
-								</div>
-								<div>
-									<input type="text" value="邀请码" id="p_code" name="p_code" />
 								</div>
 								<div class="clearfix mt10 phone_code">
 									<div class="left">
@@ -118,24 +112,6 @@ $(document).ready(function(){
 		}
 		$("#m_pwd").css("color" , "#000");	
 	});
-	$("#m_code").click(function(){
-		var m_code = $("#m_code").val();
-		if(m_code ==  '邀请码'){
-			$("#m_code").val('');	
-		}
-	}).blur(function(){
-		var m_code = $("#m_code").val();
-		if(m_code ==  ''){
-			$("#m_code").val('邀请码');				
-			$("#m_code").css("color" , "#666");
-		}
-	}).focus(function(){
-		var m_code = $("#m_code").val();
-		if(m_code ==  '邀请码'){
-			$("#m_code").val('');	
-		}
-		$("#m_code").css("color" , "#000");	
-	});
 	$("#p_phone").click(function(){
 		var p_phone = $("#p_sphone").val();
 		if(p_phone ==  '手机号'){
@@ -171,24 +147,6 @@ $(document).ready(function(){
 			$("#p_pwd").val('');	
 		}
 		$("#p_pwd").css("color" , "#000");	
-	});
-	$("#p_code").click(function(){
-		var p_code = $("#p_code").val();
-		if(p_code ==  '邀请码'){
-			$("#p_code").val('');	
-		}
-	}).blur(function(){
-		var p_code = $("#p_code").val();
-		if(p_code ==  ''){
-			$("#p_code").val('邀请码');				
-			$("#p_code").css("color" , "#666");
-		}
-	}).focus(function(){
-		var p_code = $("#p_code").val();
-		if(p_code ==  '邀请码'){
-			$("#p_code").val('');	
-		}
-		$("#p_code").css("color" , "#000");	
 	});
 	$("#p_dy_code").click(function(){
 		var p_dy_code = $("#p_dy_code").val();
@@ -247,10 +205,6 @@ function regist(){
 	if(m_pwd ==  '密码'){
 		$("#m_pwd").val('');	
 	}
-	var m_code = $("#m_code").val();
-	if(m_code ==  '邀请码'){
-		$("#m_code").val('');	
-	}
 	
 	var p_phone = $("#p_phone").val();
 	if(p_phone == '手机号'){
@@ -259,14 +213,6 @@ function regist(){
 	var p_pwd = $("#p_pwd").val();
 	if(p_pwd ==  '密码'){
 		$("#p_pwd").val('');	
-	}
-	var p_code = $("#p_code").val();
-	if(p_code ==  '邀请码'){
-		$("#p_code").val('');	
-	}
-	var p_dy_code = $("#p_dy_code").val();
-	if(p_dy_code ==  '动态码'){
-		$("#p_code").val('');	
 	}
 	$("#post_form").submit();
 }

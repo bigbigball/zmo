@@ -21,7 +21,6 @@ class User extends CI_Controller {
 		} else {
 			$this->form_validation->set_rules ( 'mail', 'mail', 'required' );
 			$this->form_validation->set_rules ( 'm_pwd', 'm_pwd', 'required' );
-			$this->form_validation->set_rules ( 'm_code', 'm_code', 'required' );
 			if ($this->form_validation->run () == FALSE) {
 				err_msgs ( '参数错误', site_url ( 'user/user/regist' ) );
 			}
@@ -48,7 +47,6 @@ class User extends CI_Controller {
 		}
 		$this->form_validation->set_rules ( 'p_phone', 'p_phone', 'required' );
 		$this->form_validation->set_rules ( 'p_pwd', 'p_pwd', 'required' );
-		$this->form_validation->set_rules ( 'p_code', 'p_code', 'required' );
 		$this->form_validation->set_rules ( 'p_dy_code', 'p_dy_code', 'required' );
 		if ($this->form_validation->run () == FALSE) {
 			err_msgs ( '参数错误', site_url ( 'user/user/regist' ) );
@@ -279,6 +277,11 @@ class User extends CI_Controller {
 		$this->load->view ( 'user/sms', $data );
 	}
 	function other() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+
 		$get = $this->input->get ();
 		$action = ! empty ( $get ['action'] ) ? $get ['action'] : 'bind_phone';
 		switch ($action) {
@@ -297,38 +300,90 @@ class User extends CI_Controller {
 		$data ['action'] = 'other';
 		$this->load->view ( 'user/other', $data );
 	}
-	function change_password() {
+	function do_bind_phone() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+
+		$this->form_validation->set_rules ( 'mobile', 'mobile', 'required' );
+		$this->form_validation->set_rules ( 'code', 'code', 'required' );
+		if ($this->form_validation->run () == FALSE) {
+		    err_msgs ( '参数错误', site_url('user/user/other',array('action' => 'bind_phone')) );
+		}
+
 		$post = $this->input->post ();
-		$data ['file'] = 'second_step';
-		$data ['action'] = 'other';
-		$this->load->view ( 'user/other', $data );
-	}
-	function do_update_pwd() {
+		$info = $this->user_model->bind_phone( $post );
+		switch ($info ['ret']) {
+			case 200 :
+		        msgs ( '绑定成功', site_url('user/user/other',array('action' => 'bind_phone')) );
+				break;
+			case 204 :
+		        err_msgs ( '该手机号已经绑定过其他帐号', site_url('user/user/other',array('action' => 'bind_phone')) );
+				break;
+			case 305 :
+		        err_msgs ( '您的手机验证码输入错误或已失效', site_url('user/user/other',array('action' => 'bind_phone')) );
+				break;
+		}
+
+		msgs ( '绑定失败', site_url('user/user/other',array('action' => 'bind_phone')) );
+    }
+	function do_verify_mail() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+
+		$this->form_validation->set_rules ( 'email', 'email', 'required' );
+		$this->form_validation->set_rules ( 'code', 'code', 'required' );
+		if ($this->form_validation->run () == FALSE) {
+		    err_msgs ( '参数错误', site_url('user/user/other',array('action' => 'verify_mail')) );
+		}
+
+		$post = $this->input->post ();
+		$info = $this->user_model->verify_mail( $post );
+		switch ($info ['ret']) {
+			case 200 :
+		        msgs ( '绑定成功', site_url('user/user/other',array('action' => 'verify_mail')) );
+				break;
+			case 204 :
+		        err_msgs ( '该邮箱已经绑定过其他帐号', site_url('user/user/other',array('action' => 'verify_mail')) );
+				break;
+			case 305 :
+		        err_msgs ( '您的邮箱验证码输入错误或已失效', site_url('user/user/other',array('action' => 'verify_mail')) );
+				break;
+		}
+
+		msgs ( '绑定失败', site_url('user/user/other',array('action' => 'verify_mail')) );
+    }
+	function do_passwd_manage() {
+		if (! $this->check_login ()) {
+			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+			return ;
+		}
+
+		$this->form_validation->set_rules ( 'old_pwd', 'old_pwd', 'required' );
 		$this->form_validation->set_rules ( 'pwd', 'pwd', 'required' );
 		$this->form_validation->set_rules ( 'ver_pwd', 'ver_pwd', 'required' );
 		if ($this->form_validation->run () == FALSE) {
-			err_msgs ( '参数错误', site_url ( 'user/user/regist' ) );
+		    err_msgs ( '参数错误', site_url('user/user/other',array('action' => 'passwd_manage')) );
 		}
+
 		$post = $this->input->post ();
+		$user_info = $this->user_model->get_user_info ();
+        if ($user_info['passwd'] != md5($post['old_pwd'])) {
+			err_msgs ( '原始密码有误，请重新输入', site_url ( 'user/user/other', array (
+					'action' => 'passwd_manage' 
+			) ) );
+        }
+
 		if ($post ['pwd'] != $post ['ver_pwd']) {
 			err_msgs ( '您输入的两次密码不一致，请重新输入', site_url ( 'user/user/other', array (
 					'action' => 'passwd_manage' 
 			) ) );
 		}
 		$info = $this->user_model->update_pwd ( $post );
-		$data ['action'] = 'other';
-		$data ['url'] = site_url ( 'user/user/other', array (
-				'action' => 'passwd_manage' 
-		) );
-		if ($info) {
-			$data ['msg'] = '修改成功';
-			$data ['file'] = 'success';
-			$this->load->view ( 'user/center', $data );
-		} else {
-			$data ['msg'] = '操作失败';
-			$data ['file'] = 'error';
-			$this->load->view ( 'user/center', $data );
-		}
+		msgs ( '修改成功', site_url ( 'user/user/center' ) );
 	}
 	function loginout() {
 		if ($this->check_login ()) {

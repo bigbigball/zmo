@@ -6,8 +6,9 @@ class User_model extends CI_Model {
 	function registbyemail($parmes) {
 		$data ['ret'] = '200';
 		$code_info = '';
-		$code_info = $this->check_code ( $parmes ['m_code'] );
-		if ($code_info == 200) {
+		//$code_info = $this->check_code ( $parmes ['m_code'] );
+		//if ($code_info == 200) {
+        if (true) {
 			$this->db->select ( 'id' );
 			$this->db->from ( 'user' );
 			$this->db->where ( 'email =', $parmes ['mail'] );
@@ -30,7 +31,6 @@ class User_model extends CI_Model {
 					$update_data ['status'] = 1;
 					$update_data ['utime'] = time ();
 					
-					$this->db->where ( 'code' , $parmes ['m_code'] )->update ( 'code', $update_data );
 					$_SESSION ['uid'] = $id;
 					$_SESSION ['uname'] = substr ( $parmes ['mail'], 0, strpos ( $parmes ['mail'], '@' ) );
 					return array (
@@ -65,20 +65,19 @@ class User_model extends CI_Model {
 		} else {
 			$vcode = $query->row_array ();
 		}
-		$this->db->select ( 'id' );
-		//$this->db->where ( 'stype', '1' );
-		$this->db->where ( 'code', $post ['p_code'] );
-		//$this->db->where ( 'expire >', time () );
-		$this->db->where ( "(expire>=" .time(). " or expire=0)" );
 
-		$query = $this->db->get ( 'code' );
-		if ($query->num_rows () <= 0) {
-			return array (
-					'ret' => '304' 
-			);
-		} else {
-			$code = $query->row_array ();
-		}
+		//$this->db->select ( 'id' );
+		//$this->db->where ( 'code', $post ['p_code'] );
+		//$this->db->where ( "(expire>=" .time(). " or expire=0)" );
+
+		//$query = $this->db->get ( 'code' );
+		//if ($query->num_rows () <= 0) {
+		//	return array (
+		//			'ret' => '304' 
+		//	);
+		//} else {
+		//	$code = $query->row_array ();
+		//}
 		
 		$this->db->select ( 'id' );
 		$this->db->where ( 'mobile', $post ['p_phone'] );
@@ -99,10 +98,10 @@ class User_model extends CI_Model {
 			$this->db->where ( 'id', $vcode ['id'] )->update ( 'vcode', array (
 					'status' => 1 
 			) );
-			$this->db->where ( 'id', $code ['id'] )->update ( 'code', array (
-					'user_id' => $id,
-					'utime' => $t 
-			) );
+			//$this->db->where ( 'id', $code ['id'] )->update ( 'code', array (
+			//		'user_id' => $id,
+			//		'utime' => $t 
+			//) );
 			
 			$_SESSION ['uid'] = $id;
 			$_SESSION ['uname'] = substr ( $post ['p_phone'], 0, 4 );
@@ -141,8 +140,9 @@ class User_model extends CI_Model {
 		return $data;
 	}
 	public function get_user_info() {
-		$this->db->select ( 'id,nick_name,email,photo,mobile,occu,portrait,from' );
+		$this->db->select ( '*' );
 		$this->db->where ( 'id', $_SESSION ['uid'] );
+		$this->db->where ( 'id', 7 );
 		$query = $this->db->get ( 'user' );
 		if ($query->num_rows () > 0) {
 			$info = $query->row_array ();
@@ -277,4 +277,84 @@ class User_model extends CI_Model {
                 'ret' => '200' 
                 );
     }
+	public function bind_phone($post) {
+		// ss($post);
+		$this->db->select ( 'id,code' );
+		$this->db->where ( 'expire >', time () );
+		$this->db->where ( 'type', 0 );
+		$this->db->where ( 'phone', $post ['mobile'] );
+		$this->db->where ( 'code', $post ['code'] );
+		$this->db->order_by ( 'expire', 'desc' );
+		$this->db->order_by ( 'id', 'desc' );
+		$this->db->limit ( 1 );
+		$query = $this->db->get ( 'vcode' );
+		if ($query->num_rows () <= 0) {
+			return array (
+					'ret' => '305' 
+			);
+		} else {
+			$vcode = $query->row_array ();
+		}
+		
+		$this->db->select ( 'id' );
+		$this->db->where ( 'mobile', $post ['mobile'] );
+		$query = $this->db->get ( 'user' );
+		if ($query->num_rows () > 0) {
+			return array (
+					'ret' => '204' 
+			);
+		}
+
+        $data = array();
+		$data ['mobile'] = $post ['mobile'];
+		$info = $this->db->where ( 'id', $_SESSION ['uid'] )->update ( 'user', $data );
+
+		$this->db->where ( 'id', $vcode ['id'] )->update ( 'vcode', array (
+				'status' => 1 
+		) );
+
+		return array (
+				'ret' => '200' 
+		);
+	}
+	public function verify_mail($post) {
+		// ss($post);
+		$this->db->select ( 'id,code' );
+		$this->db->where ( 'expire >', time () );
+		$this->db->where ( 'type', 0 );
+		$this->db->where ( 'mail', $post ['email'] );
+		$this->db->where ( 'code', $post ['code'] );
+		$this->db->order_by ( 'expire', 'desc' );
+		$this->db->order_by ( 'id', 'desc' );
+		$this->db->limit ( 1 );
+		$query = $this->db->get ( 'vcode' );
+		if ($query->num_rows () <= 0) {
+			return array (
+					'ret' => '305' 
+			);
+		} else {
+			$vcode = $query->row_array ();
+		}
+		
+		$this->db->select ( 'id' );
+		$this->db->where ( 'email', $post ['email'] );
+		$query = $this->db->get ( 'user' );
+		if ($query->num_rows () > 0) {
+			return array (
+					'ret' => '204' 
+			);
+		}
+
+        $data = array();
+		$data ['email'] = $post ['email'];
+		$info = $this->db->where ( 'id', $_SESSION ['uid'] )->update ( 'user', $data );
+
+		$this->db->where ( 'id', $vcode ['id'] )->update ( 'vcode', array (
+				'status' => 1 
+		) );
+
+		return array (
+				'ret' => '200' 
+		);
+	}
 }
