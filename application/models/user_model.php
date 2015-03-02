@@ -142,7 +142,6 @@ class User_model extends CI_Model {
 	public function get_user_info() {
 		$this->db->select ( '*' );
 		$this->db->where ( 'id', $_SESSION ['uid'] );
-		$this->db->where ( 'id', 7 );
 		$query = $this->db->get ( 'user' );
 		if ($query->num_rows () > 0) {
 			$info = $query->row_array ();
