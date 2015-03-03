@@ -23,6 +23,9 @@ $autoload ['packages'] = array ();
  */
 
 $autoload ['libraries'] = array (
+		'email',
+        'PHPMailer',
+        'SMTP',
 		'sms' 
 );
 
@@ -43,6 +46,7 @@ $autoload ['helper'] = array (
  */
 
 $autoload ['config'] = array (
+		'email',
 		'order',
 		'thirdkey',
 		'ccvideo',

@@ -608,7 +608,7 @@ class PHPMailer {
    * @return bool
    */
   protected function SmtpSend($header, $body) {
-    require_once $this->PluginDir . 'class.smtp.php';
+    //require_once $this->PluginDir . 'class.smtp.php';
     $bad_rcpt = array();
 
     if(!$this->SmtpConnect()) {

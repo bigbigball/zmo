@@ -10,6 +10,7 @@ class Pf extends CI_Controller {
 	}
 	public function send_phone_code() {
 		$this->form_validation->set_rules ( 'phone', 'phone', 'required' );
+        var_dump($this->form_validation->run ());
 		if ($this->form_validation->run () == FALSE) {
 			exit ( json_encode ( array (
 					'ret' => 400,

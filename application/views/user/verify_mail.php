@@ -24,19 +24,19 @@
 <script>
 $(document).ready(function(){
 	$(".codeNumber").click(function(){
-		var mail = $(".emailBox").val();
+		var email = $(".emailBox").val();
 		var email_reg = /^[-,_,A-Z,a-z,0-9]+@([_,A-Z,a-z,0-9]+\.)+[A-Za-z0-9]{2,3}$/; ;
 		var email_reg = new RegExp(email_reg);  
-		if(email_reg.test(mail)){
+		if(email_reg.test(email)){
 			$.ajax({
 				type: "POST",
-				url: "<?php echo site_url('pf/send_phone_code');?>",
-				data: "mail=" + mail + "&_r=" + Math.random(),
+				url: "<?php echo site_url('pf/send_email_code');?>",
+				data: "email=" + email + "&_r=" + Math.random(),
 				success: function(msg){
 					var info = eval("(" + msg + ")");
 					switch(info.ret){
 						case 200:
-							alert('请您接受验证码短信');
+							alert('请您接受验证码邮件');
 							break;
 						case 400:
 							alert('参数错误');
@@ -53,10 +53,10 @@ $(document).ready(function(){
 	});
 
 	$(".submit").click(function(){
-		var mail = $(".emailBox").val();
+		var email = $(".emailBox").val();
 		var email_reg = /^[-,_,A-Z,a-z,0-9]+@([_,A-Z,a-z,0-9]+\.)+[A-Za-z0-9]{2,3}$/; ;
 		var email_reg = new RegExp(email_reg);  
-		if(!email_reg.test(mail)){
+		if(!email_reg.test(email)){
 			alert('请填写邮箱帐号');
 			return false;
         }
