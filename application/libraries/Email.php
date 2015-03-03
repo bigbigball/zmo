@@ -14,7 +14,7 @@ class Email {
             $subject = '邮箱验证码';
             $this->sendEmail($to_email, $subject, $content);
         } catch (Exception $e) {
-            //echo $e->getMessage()."\n";
+            echo $e->getMessage()."\n";
             return false;
         }
 
@@ -27,6 +27,7 @@ class Email {
         $mail->CharSet = "UTF-8";
         $mail->Encoding = "base64";
         $mail->SMTPAuth = true; 
+        $mail->SMTPSecure = 'ssl';
         $mail->Host = $this->api ['smtp']; 
         $mail->Username = $this->api ['email']; 
         $mail->Password = $this->api ['password'];
