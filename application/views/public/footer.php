@@ -23,7 +23,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="site_info">Copyright2014-2015 知识有家 zhishiyoujia.com All rights reserved.京I</div>
+	<div class="site_info">Copyright2014-<?php echo date('Y');?> 知家网 zmoclub.com All rights reserved.京ICP备15009682号-1</div>
 </div>
 <!--反馈弹框-->
 <div class="pop_box" id="pop_feedback" style="display: none">
