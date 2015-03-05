@@ -54,8 +54,17 @@
 			<div class="left">
 				<img src="/zmo/static/img/weixinlogin.png" />
 			</div>
-			<div class="left" onclick="bd_login();">
+			<?php 
+			$this->config->load("thirdkey");
+			$weibo= $this->config->item("weibo_conf");
+			include_once APPPATH."/libraries"."/saetv2.ex.class.php";
+
+			$o = new SaeTOAuthV2( $weibo['WB_AKEY'] , $weibo['WB_SKEY'] );
+			$code_url = $o->getAuthorizeURL( $weibo['WB_CALLBACK_URL'] );?>
+			<div class="left">
+			<a href="<?=$code_url?>">
 				<img src="/zmo/static/img/baidulogin.png" />
+				</a>
 			</div>
 		</div>
 	</div>
@@ -64,9 +73,7 @@
 function qq_login(){
 	 var A=window.open("<?php echo site_url('user/user/qq_login')?>","TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
 }
-function bd_login(){
-	window.location.href = "http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=<?php echo $config['bd']['key'];?>&redirect_uri=<?php echo $config['bd']['rurl'];?>&scope=basic&display=popup";	
-}
+
 function login(){
 	var mail = $("#mail").val();
 	var pwd = $("#pwd").val();

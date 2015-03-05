@@ -13,3 +13,9 @@ $config ['qq'] ['appid'] = '100675620';
 $config ['qq'] ['appkey'] = 'cb3c5cbf70012ef82a467b9303dff953';
 
 $config ['wx'] ['key'] = '5EYhWHaSZtA4dglRT0SHPutpH5V55sAb';
+
+$config["weibo_conf"] = array(
+    "WB_AKEY" => '2821172473',
+    "WB_SKEY" =>'5a904a769716426f3aa75a5202ea5703',
+    "WB_CALLBACK_URL" => 'http://zmoclub.com/callback.php'
+);
