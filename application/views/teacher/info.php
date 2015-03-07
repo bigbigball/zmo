@@ -25,8 +25,10 @@
                 <a href="javascript:void(0);" class="btn" onclick="collection('4');">收藏</a>
                 <?php }?>
             </div>
+            
 		</div>
 	</div>
+	<p class="f16 mb30"><h4>导师简历：</h4><?php echo $info['resume'];?></p>
 	<div class="item-title mt60">
 		<div class="title">
 			<h2>课程介绍</h2>

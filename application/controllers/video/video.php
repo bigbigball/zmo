@@ -21,7 +21,7 @@ class Video extends CI_Controller {
 		$option ['limit'] = 9;
 		$option ['page'] = empty ( $get ['page'] ) ? 1 : $get ['page'];
 		$this->load->library ( 'pagination' );
-		$config ['num_links'] = 1;
+		$config ['num_links'] = 5;
 		$config ['use_page_numbers'] = TRUE;
 		$config ['page_query_string'] = TRUE;
 		$config ['base_url'] = site_url ( 'video/video/show', array (
