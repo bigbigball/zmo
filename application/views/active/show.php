@@ -28,7 +28,7 @@
                      <?php if(!empty($v['img'])){?>
                     <img style="width:240px;" src="<?php echo $v['img'];?>" />
                     <?php }else{?>
-                    <img src="/zmo/static/tmp/list.png" />
+                    <img style="width:240px;" src="/zmo/static/tmp/list.png" />
                     <?php }?>   
                     </div>
 					<div class="itag"><?php if($v['type'] == 1){ echo '分享';}elseif($v['type'] == 2){ echo '沙龙';}?></div>
