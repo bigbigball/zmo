@@ -26,7 +26,7 @@
 				<div class="left iimg">
 					<div>
                      <?php if(!empty($v['img'])){?>
-                    <img style="width:240px;" src="<?php echo $v['img'];?>" />
+                    <img src="<?php echo $v['img'];?>" />
                     <?php }else{?>
                     <img src="/zmo/static/tmp/list.png" />
                     <?php }?>   
