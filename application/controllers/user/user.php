@@ -504,4 +504,34 @@ class User extends CI_Controller {
             }
         }
     }
+	function email_find_pwd() {
+        if ($this->check_login ()) {
+            err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );
+        }
+
+        $post = $this->input->post ();
+        if (empty ( $post )) {
+            $this->load->view ( 'user/find_pwd' );
+        } else {
+            $this->form_validation->set_rules ( 'm_mail', 'm_mail', 'required' );
+            $this->form_validation->set_rules ( 'm_pwd', 'm_pwd', 'required' );
+            $this->form_validation->set_rules ( 'm_dy_code', 'm_dy_code', 'required' );
+            if ($this->form_validation->run () == FALSE) {
+                err_msgs ( '参数错误', site_url ( 'user/user/find_pwd' ) );
+            }
+
+            $info = $this->user_model->email_find_pwd ( $post );
+            switch ($info ['ret']) {
+                case 200 :
+                    msgs ( '修改成功', site_url ( 'user/user/login' ) );
+                    break;
+                case 305 :
+                    err_msgs ( '您的邮箱验证码输入错误或已失效', site_url ( 'user/user/find_pwd' ) );
+                    break;
+                case 205 :
+                    err_msgs ( '您的邮箱还没有注册，请注册', site_url ( 'user/user/regist' ) );
+                    break;
+            }
+        }
+    }
 }

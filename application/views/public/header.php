@@ -3,6 +3,8 @@
 <head>
 <meta property="wb:webmaster" content="6c574941b5c4021b" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="qc:admins" content="2274371607625734526375" />
+
 <title>ZMO自媒体平台</title>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/globle.css" />
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/home.css" />

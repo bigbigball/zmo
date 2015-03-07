@@ -23,6 +23,9 @@
 								<div class="mt20 mb20">
 									<input type="password" id="m_pwd" name="m_pwd" placeholder="密码" />
 								</div>
+								<div style="margin: 50px 0px;">
+                                    <br>
+								</div>								
 							</div>
 						</div>
 						<div id="phone" class="tab-pane">
@@ -30,10 +33,10 @@
 								<div>
 									<input type="text" value="手机号" id="p_phone" name="p_phone" />
 								</div>
-								<div style="margin: 10px 0px;">
+								<div class="mt20 mb20">
 									<input type="password" id="p_pwd" name="p_pwd" placeholder="密码" />
 								</div>
-								<div class="clearfix mt10 phone_code">
+								<div class="clearfix mt20 mb20 phone_code">
 									<div class="left">
 										<input type="text" value="动态码" class="phone_code_text"
 											id="p_dy_code" name="p_dy_code">
@@ -41,6 +44,9 @@
 									<div class="left">
 										<a href="javascript:void(0);" class="phone_code_button">获取手机动态码</a>
 									</div>
+								</div>
+								<div style="margin: 10px 0px;">
+                                    <br>
 								</div>
 							</div>
 						</div>

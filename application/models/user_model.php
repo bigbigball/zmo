@@ -276,6 +276,46 @@ class User_model extends CI_Model {
                 'ret' => '200' 
                 );
     }
+    public function email_find_pwd($post) {
+        // ss($post);
+        $this->db->select ( 'id,code' );
+        $this->db->where ( 'expire >', time () );
+        $this->db->where ( 'type', 0 );
+        $this->db->where ( 'mail', $post ['m_mail'] );
+        $this->db->where ( 'code', $post ['m_dy_code'] );
+        $this->db->order_by ( 'expire', 'desc' );
+        $this->db->order_by ( 'id', 'desc' );
+        $this->db->limit ( 1 );
+        $query = $this->db->get ( 'vcode' );
+        if ($query->num_rows () <= 0) {
+            return array (
+                    'ret' => '305' 
+                    );
+        } else {
+            $vcode = $query->row_array ();
+        }
+
+        $this->db->select ( 'id' );
+        $this->db->where ( 'email', $post ['m_mail'] );
+        $query = $this->db->get ( 'user' );
+        if ($query->num_rows () == 0) {
+            return array (
+                    'ret' => '205' 
+                    );
+        }
+
+        $this->db->where ( 'email', $post ['m_mail'] )->update ( 'user', array (
+                    'passwd' => md5($post ['m_pwd'])
+                    ) );
+
+        $this->db->where ( 'id', $vcode ['id'] )->update ( 'vcode', array (
+                    'status' => 1 
+                    ) );
+
+        return array (
+                'ret' => '200' 
+                );
+    }
 	public function bind_phone($post) {
 		// ss($post);
 		$this->db->select ( 'id,code' );
