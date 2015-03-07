@@ -11,6 +11,26 @@ class User extends CI_Controller {
 		$this->load->model ( 'teacher_model', '', true );
 		$this->load->library ( 'form_validation' );
 	}
+	function qq_callback () {
+		if ($this->check_login ()) {
+			err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );
+		}
+		$post = $this->input->post ();
+		$get = $this->input->get ();
+
+		include_once APPPATH . 'third_party/qq/qqConnectAPI.php';
+		$qc = new QC ();
+        $access_token = $qc->qq_callback();
+        $openid = $qc->get_openid();
+
+		$qc = new QC ($access_token, $openid);
+		$info = $qc->get_user_info ();
+        echo $info['nickname'];
+        echo "<br>";
+        echo $openid;
+        echo "<br>";
+
+    }
 	function regist() {
 		if ($this->check_login ()) {
 			err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );

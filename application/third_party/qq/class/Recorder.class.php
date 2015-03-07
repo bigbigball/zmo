@@ -11,8 +11,12 @@ class Recorder {
 		$this->error = new ErrorCase ();
 		
 		// -------读取配置文件
-		$incFileContents = file_get_contents ( ROOT . "comm/inc.php" );
-		$this->inc = json_decode ( $incFileContents );
+		//$incFileContents = file_get_contents ( ROOT . "comm/inc.php" );
+		//$this->inc = json_decode ( $incFileContents );
+
+        $ctl = new CI_Controller();
+        $this->inc = $ctl->config->item ( 'qq' );
+
 		if (empty ( $this->inc )) {
 			$this->error->showError ( "20001" );
 		}
@@ -34,10 +38,10 @@ class Recorder {
 		}
 	}
 	public function readInc($name) {
-		if (empty ( $this->inc->$name )) {
+		if (empty ( $this->inc [$name] )) {
 			return null;
 		} else {
-			return $this->inc->$name;
+			return $this->inc [$name];
 		}
 	}
 	public function delete($name) {

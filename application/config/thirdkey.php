@@ -9,8 +9,17 @@ $config ['bd'] ['isappuser'] = 'https://openapi.baidu.com/rest/2.0/passport/user
 $config ['bd'] ['getinfo'] = 'https://openapi.baidu.com/rest/2.0/passport/users/getInfo';
 $config ['bd'] ['rurl'] = 'http://zmo.cmlove.cm/index.php/user/user/bdlogin.html';
 
-$config ['qq'] ['appid'] = '100675620';
-$config ['qq'] ['appkey'] = 'cb3c5cbf70012ef82a467b9303dff953';
+$config ['qq'] ['appid'] = '101197438';
+$config ['qq'] ['appkey'] = 'd182f14a41ee8a8b1ade654806331448';
+$config ['qq'] ['callback'] = 'http://zmoclub.com/zmo/index.php/user/user/qq_callback.html';
+$config ['qq'] ['state'] = '5c3eaeb36be89510bebbc0cb29fd71f4';
+$config ['qq'] ['scope'] = 'get_user_info';
+$config ['qq'] ['errorReport'] = true;
+$config ['qq'] ['storageType'] = 'file';
+$config ['qq'] ['host'] = 'zmoclub.com';
+$config ['qq'] ['user'] = 'root';
+$config ['qq'] ['password'] = 'root';
+$config ['qq'] ['database'] = 'test';
 
 $config ['wx'] ['key'] = '5EYhWHaSZtA4dglRT0SHPutpH5V55sAb';
 
