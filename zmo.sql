@@ -587,6 +587,8 @@ CREATE TABLE `z_user` (
   `portrait` varchar(255) DEFAULT '',
   `atoken` varchar(255) DEFAULT '',
   `rtoken` varchar(255) DEFAULT '',
+  `qq_openid` varchar(255) DEFAULT '',
+  `wx_openid` varchar(255) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
