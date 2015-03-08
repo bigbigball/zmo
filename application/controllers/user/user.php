@@ -25,10 +25,30 @@ class User extends CI_Controller {
 
 		$qc = new QC ($access_token, $openid);
 		$info = $qc->get_user_info ();
-        echo $info['nickname'];
-        echo "<br>";
-        echo $openid;
-        echo "<br>";
+
+        $params = array();
+        $params['type'] = 'qq';
+        $params['openid'] = $openid;
+        $params['nick_name'] = $info['nickname'];
+					
+        $_SESSION ['tencent_login'] = $params;
+        redirect(site_url ( 'user/user/qq_callback_login' ));
+    }
+
+	function qq_callback_login () {
+        $params = $_SESSION ['tencent_login'];
+        $info = $this->user_model->login_by_tencent ( $params);
+        switch ($info ['ret']) {
+            case 200 :
+                msgs ( '登陆成功', site_url ( 'user/user/center' ) );
+                break;
+            case 204 :
+                err_msgs ( '登录失败', site_url ( 'user/user/login' ) );
+                break;
+            case 400 :
+                err_msgs ( '参数错误', site_url ( 'user/user/login' ) );
+                break;
+        }
 
     }
 	function regist() {

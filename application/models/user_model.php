@@ -114,6 +114,55 @@ class User_model extends CI_Model {
 			);
 		}
 	}
+	public function login_by_tencent ($params) {
+		if (empty ( $params ['type'] ) || empty ( $params ['openid'] )) {
+			$data ['ret'] = 400;
+		} else {
+			$this->db->select ( 'id , nick_name , email , mobile ,status ,type' );
+			$this->db->from ( 'user' );
+            if($params['type'] == 'qq') {
+			    $this->db->where ( "qq_openid = '{$params['openid']}' " );
+            } else {
+			    $this->db->where ( "wx_openid = '{$params['openid']}' " );
+            }
+			$this->db->limit ( 1 );
+			$query = $this->db->get ();
+
+			if ($query->num_rows () == 0) {
+				$insert_data ['status'] = 0;
+				$insert_data ['type'] = 1;
+				$insert_data ['ctime'] = time ();
+                $insert_data ['utime'] = time ();
+                $insert_data ['nick_name'] = $params['nick_name'];
+                if($params['type'] == 'qq') {
+                    $insert_data ['qq_openid'] = $params['openid']; 
+                } else {
+                    $insert_data ['wx_openid'] = $params['openid'];
+                }
+				
+				$reg = $this->db->insert ( 'user', $insert_data );
+				if ($reg) {
+                    $id = $this->db->insert_id ();
+                    $this->db->select ( '*' );
+                    $this->db->where ( 'id', $id );
+                    $query = $this->db->get ( 'user' );
+                }
+            }
+			
+			if ($query->num_rows () > 0) {
+				$info = $query->row_array ();
+				$_SESSION ['uid'] = $info ['id'];
+				if (! empty ( $info ['nick_name'] )) {
+					$_SESSION ['uname'] = $info ['nick_name'];
+				} else
+					$_SESSION ['uname'] = ! empty ( $info ['nick_name'] ) ? $info ['nick_name'] : ! empty ( $info ['email'] ) ? substr ( $info ['email'], 0, strpos ( $info ['email'], '@' ) ) : substr ( $info ['mobile'], 0, 4 );
+				$data ['ret'] = 200;
+			} else {
+				$data ['ret'] = 204;
+			}
+		}
+		return $data;
+	}
 	public function login($parmes) {
 		if (empty ( $parmes ['mail'] ) || empty ( $parmes ['pwd'] )) {
 			$data ['ret'] = 400;

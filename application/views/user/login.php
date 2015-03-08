@@ -48,8 +48,10 @@
 			<div class="third_line left"></div>
 		</div>
 		<div class="third_icon clearfix">
-			<div class="left" onclick="qq_login();">
+			<div class="left">
+			<a href="<?php echo site_url('user/user/qq_login')?>">
 				<img src="/zmo/static/img/qqlogin.png" />
+            </a>
 			</div>
 			<div class="left">
 				<img src="/zmo/static/img/weixinlogin.png" />
