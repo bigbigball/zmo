@@ -98,11 +98,18 @@ class Lesson_model extends CI_Model {
 		if ($query->num_rows () > 0) {
 			$info = $query->row_array ();
 			$this->db->select ( 'id,name,portrait,occupation,desc,resume' );
-			$this->db->where ( 'id =', $info ['guest_id'] );
+			$this->db->where_in( 'id ', explode(',',$info ['guest_id']) );
 			$query = $this->db->get ( 'tutor' );
 			if ($query->num_rows > 0) {
-				$teacher = $query->row_array ();
-				$info ['tutor'] = $teacher;
+//                if(@$_GET['debug']==1){
+                    foreach($query ->result_array() as $row){
+                        $info['tutor'][] = $row;
+                    }
+//                }else{
+//                    $teacher = $query->row_array ();
+//                    $info ['tutor'] = $teacher;
+//                }
+//				$teacher = $query->result_array();
 			}
 			return $info;
 		}

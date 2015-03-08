@@ -95,8 +95,9 @@
                 	<div class="active_title"><?php echo $active[0]['title'];?></div>
                     <div class="active_desc">
                     	<span class="active_tag"><?php echo $active[0]['theme'];?></span>
-                        <?php echo date('m月d日 H:i' , $active[0]['stime']);?>-
-                        <?php echo date('H:i' , $active[0]['etime']);?>
+                        <?php echo date('m月d日 ' , $active[0]['stime']);?>
+<!--                        --->
+<!--                        --><?php //echo date('H:i' , $active[0]['etime']);?>
                     </div>
                 </div>
             </div>
@@ -113,8 +114,9 @@
                         <div class="active_title"><?php echo $active[1]['title'];?></div>
                         <div class="active_desc">
                             <span class="active_tag"><?php echo $active[1]['theme'];?></span>
-                            <?php echo date('m月d日 H:i' , $active[1]['stime']);?>-
-                        	<?php echo date('H:i' , $active[1]['etime']);?>
+                            <?php echo date('m月d日 ' , $active[1]['stime']);?>
+<!--                            --->
+<!--                        	--><?php //echo date('H:i' , $active[1]['etime']);?>
                         </div>
                     </div>
                 </div>
@@ -130,8 +132,9 @@
                         <div class="active_title"><?php echo $active[2]['title'];?></div>
                         <div class="active_desc">
                             <span class="active_tag"><?php echo $active[2]['theme'];?></span>
-                            <?php echo date('m月d日 H:i' , $active[2]['stime']);?>-
-                        	<?php echo date('H:i' , $active[2]['etime']);?>
+                            <?php echo date('m月d日 ' , $active[2]['stime']);?>
+<!--                            --->
+<!--                        	--><?php //echo date('H:i' , $active[2]['etime']);?>
                         </div>
                     </div>
                 </div>
@@ -150,8 +153,9 @@
                     <div class="active_title"><?php if(isset($active[3]['title']))echo $active[3]['title'];?></div>
                     <div class="active_desc">
                         <span class="active_tag"><?php if(isset($active[3]['theme']))echo $active[3]['theme'];?></span>
-                         <?php if(isset($active[3]['stime'])) echo date('m月d日 H:i' , $active[3]['stime']);?>-
-                        	<?php if(isset($active[3]['etime'])) echo date('H:i' , $active[3]['etime']);?>
+                         <?php if(isset($active[3]['stime'])) echo date('m月d日 ' , $active[3]['stime']);?>
+<!--                        --->
+<!--                        	--><?php //if(isset($active[3]['etime'])) echo date('H:i' , $active[3]['etime']);?>
                     </div>
                 </div>
             </div>

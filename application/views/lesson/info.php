@@ -32,7 +32,13 @@ function sign_up(){
 			enctype="multipart/form-data" id="post_form">
 			<div class="left" style="width: 585px;">
 				<p class="f24 mb20"><?php echo $info['title'];?></p>
-				<p class="f16 mb20">导师：<?php if(!empty($info['tutor'])){echo $info['tutor']['name'];}?></p>
+                	<p class="f16 mb20">导师：
+                        <?php if(!empty($info['tutor'])){
+                            foreach($info['tutor'] as $k=>$val){
+                                echo $val['name'].' ';
+                            }
+                        }?>
+                    </p>
 				<p class="f16 mb20">
 					价格：<span class="price"><?php if($info['is_price'] == 0){ echo '免费';}else{echo $info['price'];}?></span>
 				</p>
@@ -118,14 +124,27 @@ switch (date ( 'w', $info ['etime'] )) {
 		</div>
 	</div>
 	<div class="clearfix" style="margin-top: 80px;">
-		<img src="<?php echo $info['tutor']['portrait'];?>" title="" alt=""
-			class="left mr40" />
-		<div>
-			<p class="f24 mb20"><?php echo $info['tutor']['name'];?></p>
-			<p class="f16 mb20">简介：<?php echo $info['tutor']['occupation'];?></p>
-			<p class="f16 mb30"
-				style="height: 115px; color: #666666; line-height: 26px;"><?php echo $info['tutor']['desc']?></p>
-		</div>
+        <?php if(!empty($info['tutor'])):?>
+            <?php foreach($info['tutor'] as $k=>$val):?>
+                <div class="clearfix" >
+                    <img src="<?php echo $val['portrait'];?>" title="" alt=""
+                         class="left mr40" />
+                    <div>
+                        <p class="f24 mb20">
+                            <?php echo $val['name'];?>
+                        </p>
+                        <p class="f16 mb20">简介：
+                            <?php echo $val['occupation'];?>
+                        </p>
+                        <p class="f16 mb30"
+                           style="height: 115px; color: #666666; line-height: 26px;">
+                            <?php echo $val['desc']?>
+                        </p>
+                    </div>
+                </div>
+            <?php endforeach;?>
+        <?php endif ;?>
+
 	</div>
     <?php }?>
     <div class="item-title mt60">
