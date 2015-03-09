@@ -10,6 +10,29 @@ class User extends CI_Controller {
 		$this->load->model ( 'active_model', '', true );
 		$this->load->model ( 'teacher_model', '', true );
 		$this->load->library ( 'form_validation' );
+		$this->config->load("thirdkey");
+		$this->weibo = $this->config->item("weibo_conf");
+		include_once APPPATH."/libraries"."/saetv2.ex.class.php";
+	}
+	function weibo_callback() {
+		$code = $_REQUEST['code'];//code值由入口文件callback.php传过来
+		$obj = new SaeTOAuthV2($this->weibo['WB_AKEY'],$this->weibo['WB_SKEY']);
+		if (isset($code)) {
+			$keys = array();
+			$keys['code'] = $code;
+			$keys['redirect_uri'] = $this->weibo['WB_CALLBACK_URL'];
+			try {
+				$token = $obj->getAccessToken( 'code', $keys ) ;//完成授权
+			} catch (OAuthException $e) {
+			}
+		}
+		$c = new SaeTClientV2($this->weibo['WB_AKEY'], $this->weibo['WB_SKEY'], $token['access_token']);
+		$ms =$c->home_timeline();
+		$uid_get = $c->get_uid();//获取u_id
+		$uid = $uid_get['uid'];
+		$user_message = $c->show_user_by_id($uid);//获取用户信息
+		print_r($user_message);
+		die();
 	}
 	function qq_callback () {
 		if ($this->check_login ()) {
@@ -121,6 +144,9 @@ class User extends CI_Controller {
 			$config ['qq'] = $this->config->item ( 'qq' );
 			$config ['wx'] = $this->config->item ( 'wx' );
 			$data ['config'] = $config;
+			$o = new SaeTOAuthV2( $this->weibo['WB_AKEY'] , $this->weibo['WB_SKEY'] );
+			$code_url = $o->getAuthorizeURL( $this->weibo['WB_CALLBACK_URL'] );
+			$data ['code_url'] = $code_url;
 			$this->load->view ( 'user/login', $data );
 		} else {
 			$this->form_validation->set_rules ( 'mail', 'mail', 'required' );
