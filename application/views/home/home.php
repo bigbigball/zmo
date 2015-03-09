@@ -21,11 +21,10 @@
         </div>
         <div class="info">
             <?php $first = array_shift($lesson);?>
-            <input id="bigimg_path" type="hidden" value="<?php if(!empty($first))echo $first['img']?>"></input>
+            <input id="bigimg_path" type="hidden" value="<?php if(!empty($first))echo $first['img']?>" />
         <a href="<?php echo site_url('lesson/lesson/info/'.$first['id'])?>">    
 			<div class="bigimg">				
 					<span class="bigimgtext"><div class="bigimgspan">第<?php if(!empty($first))echo $first['sequence']?>期</div><?php echo $first['title']?></span>				
-                <div class="desc"></div>
             </div>
 		</a>
             <div class="imgtab clearfix">
