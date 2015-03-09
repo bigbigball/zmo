@@ -162,7 +162,4 @@ $(document).ready(function(){
 
 });
 </script>
-<!-- WPA Button Begin -->
-<script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA0MzY5Ml8yNDEzMjFfODAwMDQzNjkyXw"></script>
-<!-- WPA Button END -->
 </html>
