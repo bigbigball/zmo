@@ -217,6 +217,7 @@
         </div>
     </div>
     <!----block end---->
+
     <!---bg img---->
 </div>
 <?php $this->load->view('public/footer.php');?>
