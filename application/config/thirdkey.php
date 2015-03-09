@@ -11,7 +11,7 @@ $config ['bd'] ['rurl'] = 'http://zmo.cmlove.cm/index.php/user/user/bdlogin.html
 
 $config ['qq'] ['appid'] = '101197438';
 $config ['qq'] ['appkey'] = 'd182f14a41ee8a8b1ade654806331448';
-$config ['qq'] ['callback'] = 'http://zmoclub.com/zmo/index.php/user/user/qq_callback.html';
+$config ['qq'] ['callback'] = 'http://www.zmoclub.com/index.php/user/user/qq_callback.html';
 $config ['qq'] ['state'] = '5c3eaeb36be89510bebbc0cb29fd71f4';
 $config ['qq'] ['scope'] = 'get_user_info';
 $config ['qq'] ['errorReport'] = true;
