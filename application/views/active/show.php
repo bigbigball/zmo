@@ -35,7 +35,7 @@
 				</div>
 				<div class="left iinfo">
 					<div class="ititle"><?php echo $v['title'];?></div>
-					<div class="iteachter mt20">导师：<?php if(!empty($list['tutor'])){ echo $list['tutor'][$v['guest_id']];}?></div>
+					<div class="iteachter mt20"><?php if(!empty($list['tutor'])){ echo '导师：'.$list['tutor'][$v['guest_id']];}?></div>
 					<div class="ctag clearfix mt10">
 						<div class="left">标签：</div>
                         <?php if(!empty($v['tag'])){$tags = explode('|',trim($v['tag'] , '|'));?>
