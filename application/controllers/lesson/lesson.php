@@ -35,20 +35,22 @@ class Lesson extends CI_Controller {
 		$this->pagination->initialize ( $config );
 		$pagination = $this->pagination->create_links ();
         $list = $this->lesson_model->getlist ( $option );
-        foreach($list['info'] as $key=>$val){
-            $this->db->select ( 'id,name,portrait,occupation,desc,resume' );
-            $this->db->where_in( 'id ', explode(',',$val['guest_id']) );
-            $query = $this->db->get ( 'tutor' );
-            if ($query->num_rows > 0) {
-                foreach($query ->result_array() as $row){
-                    if(!isset($list['info'][$key]['tutor'])){
-                        $list['info'][$key]['tutor'] = $row['name'];
-                    }else{
-                        $list['info'][$key]['tutor'] = $list['info'][$key]['tutor'].' '.$row['name'];
+        if($list){
+            foreach($list['info'] as $key=>$val){
+                $this->db->select ( 'id,name,portrait,occupation,desc,resume' );
+                $this->db->where_in( 'id ', explode(',',$val['guest_id']) );
+                $query = $this->db->get ( 'tutor' );
+                if ($query->num_rows > 0) {
+                    foreach($query ->result_array() as $row){
+                        if(!isset($list['info'][$key]['tutor'])){
+                            $list['info'][$key]['tutor'] = $row['name'];
+                        }else{
+                            $list['info'][$key]['tutor'] = $list['info'][$key]['tutor'].' '.$row['name'];
+                        }
                     }
+                }else{
+                    $list['info'][$key]['tutor'] = '';
                 }
-            }else{
-                $list['info'][$key]['tutor'] = '';
             }
         }
 		$data ['list'] = $list;

@@ -56,13 +56,6 @@
 			<div class="left">
 				<img src="/zmo/static/img/weixinlogin.png" />
 			</div>
-			<?php 
-			$this->config->load("thirdkey");
-			$weibo= $this->config->item("weibo_conf");
-			include_once APPPATH."/libraries"."/saetv2.ex.class.php";
-
-			$o = new SaeTOAuthV2( $weibo['WB_AKEY'] , $weibo['WB_SKEY'] );
-			$code_url = $o->getAuthorizeURL( $weibo['WB_CALLBACK_URL'] );?>
 			<div class="left">
 			<a href="<?=$code_url?>">
 				<img src="/zmo/static/img/baidulogin.png" />

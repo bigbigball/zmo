@@ -1,22 +1,20 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//新浪微博登录回调入口文件，将路径转移到login/callback方法里，并将code值传过去
+//鏂版氮寰崥鐧诲綍鍥炶皟鍏ュ彛鏂囦欢锛屽皢璺緞杞Щ鍒發ogin/callback鏂规硶閲岋紝骞跺皢code鍊间紶杩囧幓
 $code ='';
 $url = '';
 $str ='';
 $code = $_REQUEST['code'];
-$url  = "/login/callback";
-
+$url  = "/index.php/user/user/weibo_callback";
 $str = "<!doctype html>
 <html>
     <head>
     <meta charset=\"UTF-8\">
-    <title>自动跳转</title>
+    <title>鑷姩璺宠浆</title>
     </head>
 <body>";
 $str .="<form action=\"{$url}\" method=\"post\" id=\"form\" autocomplete='off'>";
@@ -28,4 +26,3 @@ $str .="</form>
            document.getElementById('form').submit();
         </script>";
 echo $str;
-

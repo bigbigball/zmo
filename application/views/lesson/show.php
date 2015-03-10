@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="info">
-        	<?php  if(!empty($list['info'])){foreach($list['info'] as $k => $v){?>
+        	<?php  if(isset($list['info']) and !empty($list['info'])){foreach($list['info'] as $k => $v){?>
             <div class="iblock clearfix">
 				<div class="left iimg">
 					<div>
