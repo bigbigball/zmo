@@ -86,10 +86,14 @@
         	<a href="<?php echo site_url('active/active/info/'.$active[0]['id']);?>">
         	<div class="active_block acitve_relative">
             	<div>
-            	<?php if(!empty($active[0]['img'])){?>
-                <img src="<?php echo $active[0]['img'];?>" width="325px" height="450px"/>
+                    <?php if(!empty($active[0]['img_index'])){?>
+                        <img src="<?php echo $active[0]['img_index'];?>" width="325px" height="450px"/>
                 <?php }else{?>
-                <img src="/static/tmp/active1.png" width="325px;" height="450px"/>
+                    <?php if(!empty($active[0]['img'])){?>
+                            <img src="<?php echo $active[0]['img'];?>" width="325px" height="450px"/>
+                    <?php }else{?>
+                        <img src="/static/tmp/active1.png" width="325px;" height="450px"/>
+                    <?php }?>
                 <?php }?>
             	</div>
                 <div class="active_info">
@@ -106,11 +110,15 @@
             <div class="active_block clearfix activelr">
             	<a href="<?php echo site_url('active/active/info/'.$active[1]['id']);?>">
             	<div class="acitve_relative">
-            	<?php if(!empty($active[1]['img'])){?>
-                <img src="<?php echo $active[1]['img'];?>" width="325px" height="224px"/>
-                <?php }else{?>
-                <img src="/static/tmp/active2.png" width="325px;" height="224px"/>
-                <?php }?>
+                    <?php if(!empty($active[1]['img_index'])){?>
+                        <img src="<?php echo $active[1]['img_index'];?>" width="325px" height="224px"/>
+                    <?php }else{?>
+                        <?php if(!empty($active[1]['img'])){?>
+                            <img src="<?php echo $active[1]['img'];?>" width="325px" height="224px"/>
+                        <?php }else{?>
+                            <img src="/static/tmp/active2.png" width="325px;" height="224px"/>
+                        <?php }?>
+                    <?php }?>
                     <div class="active_info">
                         <div class="active_title"><?php echo $active[1]['title'];?></div>
                         <div class="active_desc">
@@ -123,13 +131,17 @@
                 </div>
                 </a>
                 <a href="<?php echo site_url('active/active/info/'.$active[2]['id']);?>">
-                <div style=" margin-top:2px;" class="acitve_relative">
-                <?php if(!empty($active[2]['img'])){?>
-                <img src="<?php echo $active[2]['img'];?>" width="325px" height="224px"/>
-                <?php }else{?>
-                <img src="/static/tmp/active3.png" width="325px;" height="224px"/>
-                <?php }?>
-                    <div class="active_info">
+                    <div style=" margin-top:2px;" class="acitve_relative">
+                        <?php if(!empty($active[2]['img_index'])){?>
+                            <img src="<?php echo $active[2]['img_index'];?>" width="325px" height="224px"/>
+                        <?php }else{?>
+                            <?php if(!empty($active[2]['img'])){?>
+                                <img src="<?php echo $active[2]['img'];?>" width="325px" height="224px"/>
+                            <?php }else{?>
+                                <img src="/static/tmp/active3.png" width="325px;" height="224px"/>
+                            <?php }?>
+                        <?php }?>
+                        <div class="active_info">
                         <div class="active_title"><?php echo $active[2]['title'];?></div>
                         <div class="active_desc">
                             <span class="active_tag"><?php echo $active[2]['theme'];?></span>
@@ -144,10 +156,14 @@
             <a href="<?php if(isset($active[3]['id'])) echo site_url('active/active/info/'.$active[3]['id']);?>">
             <div class="active_block acitve_relative">
             <div>
-            	<?php if(!empty($active[3]['img'])){?>
-                <img src="<?php echo $active[3]['img'];?>" width="325px" height="450px"/>
+            	<?php if(!empty($active[3]['img_index'])){?>
+                <img src="<?php echo $active[3]['img_index'];?>" width="325px" height="450px"/>
                 <?php }else{?>
-                <img src="/static/tmp/active4.png" width="325px;" height="450px"/>
+                    <?php if(!empty($active[3]['img'])){?>
+                        <img src="<?php echo $active[3]['img'];?>" width="325px" height="450px"/>
+                    <?php }else{?>
+                        <img src="/static/tmp/active4.png" width="325px;" height="450px"/>
+                    <?php }?>
                 <?php }?>
             	</div>
                	<div class="active_info">
