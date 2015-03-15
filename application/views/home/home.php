@@ -139,7 +139,7 @@
                                 <img src="<?php echo $active[2]['img'];?>" width="325px" height="224px"/>
                             <?php }else{?>
                                 <img src="/static/tmp/active3.png" width="325px;" height="224px"/>
-                            <?php }?>
+                            <?phhp }?>
                         <?php }?>
                         <div class="active_info">
                         <div class="active_title"><?php echo $active[2]['title'];?></div>
