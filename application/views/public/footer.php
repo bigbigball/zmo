@@ -11,25 +11,25 @@
 		<div class="clearfix code">
 			<div class="weixin">
 				<div>
-					<img src="/zmo/static/img/dingyue.jpg" />
+					<img src="/static/img/dingyue.jpg" />
 				</div>
 				<div class="word">微信订阅号</div>
 			</div>
 			<div class="weixin ml40">
 				<div>
-					<img src="/zmo/static/img/fuwu.jpg" />
+					<img src="/static/img/fuwu.jpg" />
 				</div>
 				<div class="word">服务公共帐号</div>
 			</div>
             <div class="weixin ml40">
 				<div>
-					<img src="/zmo/static/img/weibo.jpg" />
+					<img src="/static/img/weibo.jpg" />
 				</div>
 				<div class="word">微博公共帐号</div>
 			</div>
 		</div>
 	</div>
-    <div class="site_info">
+    <span class="site_info">
         <a href="http://www.tmtpost.com/" target="_blank">钛媒体</a>
         <a href="http://www.36kr.com/" target="_blank">36kr</a>
         <a href="http://www.huxiu.com/"  target="_blank">虎嗅</a>
