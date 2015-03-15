@@ -11,22 +11,22 @@
 		<div class="clearfix code">
 			<div class="weixin">
 				<div>
-					<img src="/static/img/dingyue.jpg" />
+					<img src="/static/img/dingyue.jpg" width="110px" />
 				</div>
 				<div class="word">微信订阅号</div>
 			</div>
 			<div class="weixin ml40">
 				<div>
-					<img src="/static/img/fuwu.jpg" />
+					<img src="/static/img/fuw.jpg"  width="110px" />
 				</div>
 				<div class="word">服务公共帐号</div>
 			</div>
-            <div class="weixin ml40">
-				<div>
-					<img src="/static/img/weibo.jpg" />
-				</div>
-				<div class="word">微博公共帐号</div>
-			</div>
+<!--            <div class="weixin ml40">-->
+<!--				<div>-->
+<!--					<img src="/static/img/weibo.jpg"  width="110px" />-->
+<!--				</div>-->
+<!--				<div class="word">微博公共帐号</div>-->
+<!--			</div>-->
 		</div>
 	</div>
     <span class="site_info">
