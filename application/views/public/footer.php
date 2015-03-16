@@ -11,39 +11,18 @@
 		<div class="clearfix code">
 			<div class="weixin">
 				<div>
-					<img src="/static/img/dingyue.jpg" width="110px" />
+					<img src="/zmo/static/img/weixin.jpg" />
 				</div>
-				<div class="word">微信订阅号</div>
+				<div class="word">微信公共帐号</div>
 			</div>
 			<div class="weixin ml40">
 				<div>
-					<img src="/static/img/fuw.jpg"  width="110px" />
+					<img src="/zmo/static/img/weibo.jpg" />
 				</div>
-				<div class="word">服务公共帐号</div>
+				<div class="word">微博公共帐号</div>
 			</div>
-<!--            <div class="weixin ml40">-->
-<!--				<div>-->
-<!--					<img src="/static/img/weibo.jpg"  width="110px" />-->
-<!--				</div>-->
-<!--				<div class="word">微博公共帐号</div>-->
-<!--			</div>-->
 		</div>
 	</div>
-    <span class="site_info">
-        <a href="http://www.tmtpost.com/" target="_blank">钛媒体</a>
-        <a href="http://www.36kr.com/" target="_blank">36kr</a>
-        <a href="http://www.huxiu.com/"  target="_blank">虎嗅</a>
-        <a href="http://www.cyzone.cn/" target="_blank">创业邦</a>
-        <a href="http://www.iresearch.cn/" target="_blank">艾瑞</a>
-        <a href="http://www.ifanr.com/" target="_blank">爱范儿</a>
-        <a href="http://www.donews.com/" target="_blank">DoNews</a>
-        <a href="http://www.iheima.com/" target="_blank">i黑马</a>
-        <a href="http://www.sootoo.com/" target="_blank">速途网</a>
-        <a href="http://www.ftchinese.com/" target="_blank">FT中文网</a>
-        <a href="http://www.xmtnews.com/" target="_blank">新媒体观察</a>
-        <a href="http://www.bianews.com/" target="_blank">鞭牛士</a>
-        <a href="http://www.eguan.cn/" target="_blank">易观网</a>
-    </div>
 	<div class="site_info">Copyright2014-<?php echo date('Y');?> 知家网 zmoclub.com All rights reserved.京ICP备15009682号-1</div>
 </div>
 <!--反馈弹框-->
