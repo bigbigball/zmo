@@ -8,6 +8,7 @@
 <title>ZMO自媒体平台</title>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/globle.css" />
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/home.css" />
+<link href="/zmo/static/img/logo.png" rel="shortcut icon">
 <script type="text/javascript" src="/zmo/static/js/jquery.min.js"></script>
 </head>
 
@@ -16,7 +17,7 @@
 		<div class="header_menu">
 			<div class="header_login">
             <?php if(!empty($_SESSION['uid'])){?>
-                <a href="<?php echo site_url('user/user/center')?>"><?php echo $_SESSION['uname']?>欢迎您回来～</a><span
+                <a href="<?php echo site_url('user/user/center')?>"><?php echo $_SESSION['uname']?>，欢迎您回来～</a><span
 					style="margin: 0px 20px; width: 1px; background-color: #fff; height: 15px; display: inline-block;"></span><a
 					href="<?php echo site_url('user/user/loginout');?>">退出登陆</a>
             <?php }else{?>

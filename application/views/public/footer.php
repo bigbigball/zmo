@@ -23,7 +23,7 @@
 			</div>
 <!--            <div class="weixin ml40">-->
 <!--				<div>-->
-<!--					<img src="/static/img/weibo.jpg"  width="110px" />-->
+<!--					<img src="/static/img/weibo.png"  width="110px" />-->
 <!--				</div>-->
 <!--				<div class="word">微博公共帐号</div>-->
 <!--			</div>-->
