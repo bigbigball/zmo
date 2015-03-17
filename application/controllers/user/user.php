@@ -31,8 +31,9 @@ class User extends CI_Controller {
 		$uid_get = $c->get_uid();//获取u_id
 		$uid = $uid_get['uid'];
 		$user_message = $c->show_user_by_id($uid);//获取用户信息
-		print_r($user_message);
-		die();
+		$_SESSION ['uid'] = $user_message['id'];
+		$_SESSION['uname'] = $user_message['name'];
+		msgs ( '登陆成功', site_url ( 'user/user/center' ) );
 	}
 	function qq_callback () {
 		if ($this->check_login ()) {
@@ -459,6 +460,7 @@ class User extends CI_Controller {
 					// session_destroy();
 					unset ( $_SESSION ['uid'] );
 					unset ( $_SESSION ['name'] );
+					unset ( $_SESSION ['uname'] );
 				}
 			}
 			msgs ( '您成功退出登陆', site_url ( 'home/index' ) );
