@@ -37,10 +37,10 @@ class CI_Pagination {
 	var $num_links = 2; // Number of "digit" links to show before/after the currently viewed page
 	var $cur_page = 0; // The current page being viewed
 	var $use_page_numbers = FALSE; // Use page number for segment instead of offset
-	var $first_link = FALSE;
+	var $first_link = TRUE;
 	var $next_link = '下一页';
 	var $prev_link = '上一页';
-	var $last_link = FALSE;
+	var $last_link = TRUE;
 	var $uri_segment = 3;
 	var $full_tag_open = '';
 	var $full_tag_close = '';
@@ -197,7 +197,8 @@ class CI_Pagination {
 		
 		// And here we go...
 		$output = '';
-		
+        $first_url = ($this->first_url == '') ? $this->base_url : $this->first_url;
+        $output .= '<a href="'.$first_url.'1" style="width: 60px;" class="next">首页</a>';
 		// Render the "First" link
 		if ($this->first_link !== FALSE and $this->cur_page > ($this->num_links + 1)) {
 			$first_url = ($this->first_url == '') ? $this->base_url : $this->first_url;
@@ -275,7 +276,8 @@ class CI_Pagination {
 		
 		// Add the wrapper HTML if exists
 		$output = $this->full_tag_open . $output . $this->full_tag_close;
-		
+
+        $output .= '<a href="'.$first_url.$num_pages.'" class="next" style="width: 60px;">尾页</a>';
 		return $output;
 	}
 }

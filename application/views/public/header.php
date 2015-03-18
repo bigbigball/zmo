@@ -8,6 +8,7 @@
 <title>ZMO自媒体平台</title>
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/globle.css" />
 <link rel="stylesheet" type="text/css" href="/zmo/static/style/home.css" />
+<link href="/zmo/static/img/logo.png" rel="shortcut icon">
 <script type="text/javascript" src="/zmo/static/js/jquery.min.js"></script>
 </head>
 

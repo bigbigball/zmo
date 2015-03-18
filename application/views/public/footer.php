@@ -27,6 +27,15 @@
 				</div>
 				<div class="word">官方微博</div>
 			</div>
+<<<<<<< HEAD
+<!--            <div class="weixin ml40">-->
+<!--				<div>-->
+<!--					<img src="/static/img/weibo.png"  width="110px" />-->
+<!--				</div>-->
+<!--				<div class="word">微博公共帐号</div>-->
+<!--			</div>-->
+=======
+>>>>>>> f209b2cbc5138685c2469f60ddcdd1846e0e1d96
 		</div>
 	</div>
 	<div class="site_info">
