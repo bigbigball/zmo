@@ -13,11 +13,15 @@
 		<form action="<?php echo site_url('order/order/pay')?>" method="post"
 			enctype="multipart/form-data" id="post_form">
 			<div class="orderContent mt50">
-				<div class="title"><?php echo $goods['title']?></div>
-            <?php if(!empty($goods['tutor'])){?>
-            <p class="subTitle">导师：<?php echo $goods['tutor']['name'];?></p>
-            <?php }?>
-            <div class="content">课程简介<?php echo $goods['desc'];?></div>
+				<div class="title mb20"><?php echo $goods['title']?></div>
+                <br>
+                <?php if(!empty($goods['tutor'])){?>
+                <p class="subTitle">导师：
+<?php foreach($goods['tutor'] as $tutor) {echo $tutor['name'] . "&nbsp;&nbsp;";} ?>
+                </p>
+                <?php }?>
+
+                <div class="content">课程简介<?php echo $goods['desc'];?></div>
 				<div class="price">
 					价格：<span class=" f40 blue"><?php echo $goods['price'];?>元</span>
 				</div>
@@ -38,3 +42,4 @@ $(document).ready(function(){
 </script>
 
 <?php $this->load->view('public/footer.php');?>
+
