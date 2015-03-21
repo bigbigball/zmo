@@ -35,6 +35,47 @@ class User extends CI_Controller {
 		$_SESSION['uname'] = $user_message['name'];
 		msgs ( '登陆成功', site_url ( 'user/user/center' ) );
 	}
+    function wx_callback () {
+        if ($this->check_login ()) {
+            err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );
+        }
+        $post = $this->input->post ();
+        $get = $this->input->get ();
+
+        ini_set('display_errors', 'on');
+        error_reporting(E_ALL);
+
+        include_once APPPATH . 'third_party/wx/wxConnectAPI.php';
+        $wc = new WC ();
+        $access_token = $wc->wx_callback();
+        $openid = $wc->get_openid();
+        $info = $wc->get_user_info ();
+
+        $params = array();
+        $params['type'] = 'wx';
+        $params['openid'] = $openid;
+        $params['nick_name'] = $info['nickname'];
+
+        $_SESSION ['tencent_login'] = $params;
+        redirect(site_url ( 'user/user/wx_callback_login' ));
+    }
+
+    function wx_callback_login () {
+        $params = $_SESSION ['tencent_login'];
+        $info = $this->user_model->login_by_tencent ( $params);
+        switch ($info ['ret']) {
+            case 200 :
+                msgs ( '登陆成功', site_url ( 'user/user/center' ) );
+                break;
+            case 204 :
+                err_msgs ( '登录失败', site_url ( 'user/user/login' ) );
+                break;
+            case 400 :
+                err_msgs ( '参数错误', site_url ( 'user/user/login' ) );
+                break;
+        }
+    }
+
 	function qq_callback () {
 		if ($this->check_login ()) {
 			err_msgs ( '您已经登陆', site_url ( 'user/user/center' ) );
@@ -58,7 +99,6 @@ class User extends CI_Controller {
         $_SESSION ['tencent_login'] = $params;
         redirect(site_url ( 'user/user/qq_callback_login' ));
     }
-
 	function qq_callback_login () {
         $params = $_SESSION ['tencent_login'];
         $info = $this->user_model->login_by_tencent ( $params);
@@ -73,7 +113,6 @@ class User extends CI_Controller {
                 err_msgs ( '参数错误', site_url ( 'user/user/login' ) );
                 break;
         }
-
     }
 	function regist() {
 		if ($this->check_login ()) {
@@ -504,6 +543,11 @@ class User extends CI_Controller {
 		include_once APPPATH . 'third_party/qq/qqConnectAPI.php';
 		$qc = new QC ();
 		$qc->qq_login ();
+	}
+	function wx_login() {
+		include_once APPPATH . 'third_party/wx/wxConnectAPI.php';
+		$qc = new WC ();
+		$qc->wx_login ();
 	}
 	function is_login() {
 		if (! empty ( $_SESSION ['uid'] )) {
