@@ -54,7 +54,9 @@
             </a>
 			</div>
 			<div class="left">
+			<a href="<?php echo site_url('user/user/wx_login')?>">
 				<img src="/zmo/static/img/weixinlogin.png" />
+            </a>
 			</div>
 			<div class="left">
 			<a href="<?=$code_url?>">
