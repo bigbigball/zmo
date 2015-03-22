@@ -12,9 +12,38 @@
 	<div class="clearfix mt40 ">
 		<div class="f24 mb20"><?php echo $info['video_info']['video']['title']?></div>
 		<div class="f16 mb20" style="color:"><?php echo date('Y年m月d日' , $info['ctime'])?></div>
+        <?php if($info['is_cost']==0): ?>
 		<div>
         	<?php echo $info['play_info']['video']['playcode'];?>
         </div>
+        <?php else:?>
+        <div class="btn-box">
+            <form action="<?php echo site_url('buy/sign_up');?>" method="post"
+                  enctype="multipart/form-data" id="post_form">
+                <input type="hidden" name="id" value="<?php echo $info['id'];?>" />
+                <input type="hidden" name="type" value="5" />
+                <a href="javascript:void(0);" class="btn"
+                   onclick="sign_up();">付费观看</a>
+            </form>
+            <script>
+                function sign_up(){
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo site_url('user/user/is_login')?>",
+                        data: "_r=" + Math.random(),
+                        success: function(msg){
+                            var info = eval("(" + msg + ")");
+                            if(info.ret != 200){
+                                alert(info.msg);
+                            }else{
+                                $("#post_form").submit();
+                            }
+                        }
+                    });
+                }
+            </script>
+        </div>
+        <?php endif; ?>
 	</div>
 	<div class="item-title mt60">
 		<div class="title">

@@ -30,7 +30,10 @@ class Order extends CI_Controller {
 			} else if ($info ['info'] ['type'] == 4) {
 				$this->load->model ( 'active_model', '', true );
 				$goods = $this->active_model->getinfo ( $info ['info'] ['goods_id'] );
-			}
+			}else if($info['info']['type']==5){
+                $this->load->model ( 'video_model', '', true );
+                $goods = $this->video_model->get_info ( $info ['info'] ['goods_id'] );
+            }
 			$data ['goods'] = $goods;
 			$data ['order'] = $info;
 			$this->load->view ( 'order/buy', $data );
@@ -79,8 +82,10 @@ class Order extends CI_Controller {
 				) ) );
 			}
 		} else {
-			err_msgs ( '您提交的订单不存在，或者状态有误' );
-		}
+            err_msgs ( '您提交的订单不存在，或者状态有误',site_url ( 'user/user/order', array (
+                'action' => 'my_order_error'
+            ) ) );
+        }
 	}
 	function success() {
 		$get = $this->input->get ();

@@ -36,6 +36,11 @@
 		</div>
 	</div>
 	<div class="introduction">
+        <?php if($info['introduct']){?>
+        <?php echo $info['introduct'];?>
+        <?php }else{?>
+            这个导师马上就要开课了，期待吧！
+        <?php }?>
     	<?php if(!empty($info['lesson'])){foreach($info['lesson'] as $k => $v){?>
     	<div class="introduction_block clearfix introduction_line">
 			<div class="left ibimg">
@@ -47,6 +52,12 @@
 			<div class="left iinfo">
 				<div class="ititle"><?php echo $v['title'];?></div>
 				<div class="iteachter mt20">导师：<?php echo $info['name'];?></div>
+                <div class="clearfix">
+						<div class="ibutton mt20 left">
+							<a href="javascript:void(0);"
+								onclick="buy_lesson('<?php echo $v['id'];?>');">购买</a>
+						</div>
+					</div>
 				<div class="ctag clearfix mt10">
 					<div class="left ttag">标签：</div>
                     <?php $tags = explode('|' , $v['tag']);if(!empty($tags)){foreach($tags as $tk => $tv){?>
@@ -59,23 +70,11 @@
 				<div class="iprice mt10">
 					价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{echo '免费';}?></span>
 				</div>
-				<div class="clearfix">
-						<div class="ibutton mt20 left">
-							<a href="javascript:void(0);"
-								onclick="buy_lesson('<?php echo $v['id'];?>');">购买</a>
-						</div>
-					</div>
+
 			</div>
 		</div>
         <?php }}?>
     </div>
-
-	<div class="item-title mt60">
-		<div class="title">
-			<h2>相关资讯</h2>
-			<div>INTRODUCTION</div>
-		</div>
-	</div>
 	<div class="introduction">
     	<?php if(!empty($info['news'])){foreach($info['news'] as $k => $v){?>
     	<div class="introduction_block clearfix">

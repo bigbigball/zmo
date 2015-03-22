@@ -35,6 +35,9 @@ class News extends CI_Controller {
 		$this->pagination->initialize ( $config );
 		$pagination = $this->pagination->create_links ();
 		$list = $this->news_model->getlist ( $option );
+        if(isset($_GET['debug'])){
+            var_dump($list);
+        }
 		$data ['list'] = $list;
 		$data ['page'] = $pagination;
 		$data ['type'] = $option ['type'];

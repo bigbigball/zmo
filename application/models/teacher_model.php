@@ -44,7 +44,7 @@ class Teacher_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , name , portrait , occupation , desc , resume ' );
+		$this->db->select ( 'id , name ,introduct , portrait , occupation , desc , resume ' );
 		$this->db->from ( 'tutor' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ();
@@ -88,7 +88,7 @@ class Teacher_model extends CI_Model {
 		}
 		$this->db->select ( 'id,title,tag_info as tag , desc , is_price , price' );
 		$this->db->from ( 'lesson' );
-		$this->db->where ( 'guest_id =', $tutor_id );
+		$this->db->where_in( 'guest_id  ', explode(',', $tutor_id));
 		$this->db->limit ( 3 );
 		$query = $this->db->get ();
 		if ($query->num_rows () > 0) {

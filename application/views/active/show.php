@@ -25,16 +25,23 @@
             <div class="iblock clearfix">
 				<div class="left iimg">
 					<div>
+                        <a href="javascript:void(0);"
+								onclick="sign_up('<?php echo $v['id'];?>');">
                      <?php if(!empty($v['img'])){?>
                     <img style="width:240px;" src="<?php echo $v['img'];?>" />
                     <?php }else{?>
                     <img style="width:240px;" src="/zmo/static/tmp/list.png" />
-                    <?php }?>   
+                    <?php }?>
+                            </a>
                     </div>
 					<div class="itag"><?php if($v['type'] == 1){ echo '分享';}elseif($v['type'] == 2){ echo '沙龙';}?></div>
 				</div>
 				<div class="left iinfo">
-					<div class="ititle"><?php echo $v['title'];?></div>
+                    <a href="javascript:void(0);" onclick="sign_up('<?php echo $v['id'];?>');">
+					<div class="ititle">
+                        <?php echo $v['title'];?>
+                    </div>
+                    </a>
 					<div class="iteachter mt20"><?php if(!empty($list['tutor'])){ echo '导师：'.$list['tutor'][$v['guest_id']];}?></div>
 					<div class="ctag clearfix mt10">
 						<div class="left">标签：</div>
@@ -43,9 +50,11 @@
                         <div class="left ctags"><?php echo $tv ;?></div>
                         <?php }}}?>
                     </div>
-					<div class="idesc mt15">
-                    课程简介：<?php echo $v['desc'];?>
-                    </div>
+                    <a href="javascript:void(0);" onclick="sign_up('<?php echo $v['id'];?>');">
+					    <div class="idesc mt15">
+                        课程简介：<?php echo $v['desc'];?>
+                        </div>
+                    </a>
 					<div class="iprice mt10">
 						价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{ echo '免费';}?></span>
 					</div>

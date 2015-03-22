@@ -19,9 +19,13 @@ class Buy extends CI_Controller {
 		}
 		$post = $this->input->post ();
 		$info = $this->buy_model->sign_up ( $post );
+        $msg = '您报名成功';
+        if($post['type']==5){
+            $msg = '付费成功';
+        }
 		switch ($info ['ret']) {
 			case 200 :
-				msgs ( '您报名成功', site_url ( 'order/order/buy', array('oid' => $info['oid']) ) );
+				msgs ( $msg, site_url ( 'order/order/buy', array('oid' => $info['oid']) ) );
 				break;
 			case 204 :
 				if ($post ['type'] == 2) {

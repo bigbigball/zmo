@@ -4,17 +4,36 @@
 <div class="cmbody">
 	<div class="clearfix mt40">
 		<div class="leftBanner tab">
-			<a href="javascript:;" rel="1-1" class="curr">关于知家</a> <a
-				href="javascript:;" rel="1-2">加入我们</a> <a href="javascript:;"
-				rel="1-3">关于ZMO联盟</a>
+			<a href="javascript:;" rel="1-1"
+               <?php if(!isset($_GET['join'])):?>
+               class="curr"
+                <?php endif;?>
+                >关于知家</a>
+            <a href="javascript:;" rel="1-2"
+                <?php if(isset($_GET['join'])):?>
+                    class="curr"
+                <?php endif;?>
+                >加入我们</a>
+            <a href="javascript:;" rel="1-3"
+                >关于ZMO联盟</a>
 		</div>
 		<div class="about_rt">
-			<div id="1-1" class="about_con" style="display: block">
+			<div id="1-1" class="about_con"
+                <?php if(!isset($_GET['join'])){?>
+                 style="display: block"
+                <?php }else{?>
+                    style="display: none"
+                <?php }?>
+                 >
 				<h4>知家</h4>
 				<p>知家，面向未来，弘扬创客精神，研究创客基因，链接创客与传统企业，帮助企业成功转型。</p>
 				
 			</div>
-			<div id="1-2" class="about_con">
+			<div id="1-2" class="about_con"
+                <?php if(isset($_GET['join'])):?>
+                    style="display: block"
+                <?php endif;?>
+                >
 				<h4>加入我们</h4>
 				<p>自媒体时代，各种不同的声音来自四面八方，“主流媒体”的声音逐渐变弱，人们不再接受被一个“统一的声音”告知对或错，每一个人都在从独立获得的资讯中，对事物做出判断。</p>
 				<p>自媒体有别于由专业媒体机构主导的信息传播，它是由普通大众主导的信息传播活动，由传统的“点到面”的传播，转化为“点到点”的一种对等的传播概念。同时，它也是指为个体提供信息生产、积累、共享、传播内容兼具私密性和公开性的信息传播方式。</p>

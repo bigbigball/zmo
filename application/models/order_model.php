@@ -106,6 +106,8 @@ class Order_model extends CI_Model {
 			$show_url = site_url ( "lesson/lesson/info/{$info_goods['goods_id']}" );
 		} else if ($post ['type'] == 4) {
 			$show_url = site_url ( "active/active/info/{$info_goods['goods_id']}" );
+        } else if ($post ['type'] == 5) {
+            $show_url = site_url ( "video/video/info/{$info_goods['goods_id']}" );
 		}
 		// 需以http://开头的完整路径，例如：http://www.商户网址.com/myorder.html //防钓鱼时间戳
 		$anti_phishing_key = "";

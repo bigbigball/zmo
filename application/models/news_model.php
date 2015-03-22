@@ -79,6 +79,9 @@ class News_model extends CI_Model {
 				$img = $query->row_array ();
 				$info ['img'] = $img ['path'];
 			}
+            $this->db->where ( 'id', $id );
+            $this->db->set ( 'rnum', 'rnum + 1', FALSE );
+            $this->db->update ( 'news' );
 			return $info;
 		}
 		return false;

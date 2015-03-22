@@ -23,6 +23,9 @@ class Video_model extends CI_Model {
 		if ($post ['type'] > 0) {
 			$this->db->where ( 'type =', $post ['type'] );
 		}
+        if(isset($post['category'])){
+            $this->db->where ( 'category = ', $post['category']);
+        }
 		$this->db->where ( 'status = ', 0 );
 		$this->db->order_by ( 'order', 'asc' );
 		$this->db->order_by ( 'id', 'asc' );
@@ -55,7 +58,7 @@ class Video_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , vid , title , tag , content , ctime' );
+		$this->db->select ( 'id , vid , is_cost,cost,type,title , tag , content , ctime' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ( 'video' );
 		if ($query->num_rows () > 0) {
@@ -89,6 +92,9 @@ class Video_model extends CI_Model {
 		if ($option ['type'] > 0) {
 			$this->db->where ( 'type =', $option ['type'] );
 		}
+        if(isset($option['category'])){
+            $this->db->where ( 'category = ', $option['category']);
+        }
 		$count = $this->db->count_all_results ( 'video' );
 		return $count;
 	}

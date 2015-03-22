@@ -27,16 +27,21 @@
             <div class="iblock clearfix">
 				<div class="left iimg">
 					<div>
+                        <a href="javascript:void(0);"
+								onclick="buy_lesson('<?php echo $v['id'];?>');">
                     <?php if(!empty($v['thumb'])){?>
                     <img src="<?php echo $v['thumb'];?>" />
                     <?php }else{?>
                     <img src="/zmo/static/tmp/list.png" />
                     <?php }?>
+                            </a>
                     </div>
 					<div class="itag"><?php if($v['type'] == 1){ echo '视频课程';}elseif($v['type'] == 2){ echo '线下课程';}?></div>
 				</div>
 				<div class="left iinfo">
-					<div class="ititle"><?php echo $v['title'];?></div>
+                    <a href="javascript:void(0);"
+								onclick="buy_lesson('<?php echo $v['id'];?>');">
+					<div class="ititle"><?php echo $v['title'];?></div></a>
 					<div class="iteachter mt20">
                         <?php if(!empty($v['tutor'])){
                             echo '导师：'.$v['tutor'];
@@ -49,9 +54,12 @@
                         <div class="left ctags"><?php echo $tv ;?></div>
                         <?php }}}?>
                     </div>
+                    <a href="javascript:void(0);"
+								onclick="buy_lesson('<?php echo $v['id'];?>');">
 					<div class="idesc mt15">
                     课程简介：<?php echo $v['desc'];?>
                     </div>
+                        </a>
 					<div class="iprice mt10">
 						价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{ echo '免费';}?></span>
 					</div>

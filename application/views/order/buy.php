@@ -13,13 +13,20 @@
 		<form action="<?php echo site_url('order/order/pay')?>" method="post"
 			enctype="multipart/form-data" id="post_form">
 			<div class="orderContent mt50">
-				<div class="title"><?php echo $goods['title']?></div>
+				<div class="title" style="margin-bottom: 10px;"><?php echo $goods['title']?></div>
             <?php if(!empty($goods['tutor'])){?>
-            <p class="subTitle">导师：<?php echo $goods['tutor']['name'];?></p>
+                <?php foreach($goods['tutor'] as $key =>$val): ?>
+            <div class="subTitle" style="margin-top: 10px;">导师：<?php echo $val['name'];?></div>
+                    <?php endforeach; ?>
             <?php }?>
-            <div class="content">课程简介<?php echo $goods['desc'];?></div>
+            <?php if($order['info']['type'] != 5){?>
+                <div class="title" style="margin-top: 10px;margin-bottom: 8px;">课程简介</div>
+            <?php }?>
+            <?php if(!empty($goods['desc'])){?>
+            <div class="content "><?php echo $goods['desc'];?></div>
+            <?php }?>
 				<div class="price">
-					价格：<span class=" f40 blue"><?php echo $goods['price'];?>元</span>
+                    价格：<span class=" f40 blue"><?php echo $order['info']['price'];?>元</span>
 				</div>
 				<div class="btn-box">
 					<input type="hidden" value="<?php echo $order['info']['oid'];?>"
