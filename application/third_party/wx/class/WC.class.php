@@ -9,7 +9,7 @@ require_once (CLASS_PATH . "Oauth.class.php");
  */
 class WC extends Oauth {
 	const GET_USER_INFO_URL = "https://api.weixin.qq.com/sns/userinfo";
-
+//    const GET_ACCESS_TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token?";
 	private $kesArr, $APIMap;
 	
 	/**
@@ -62,11 +62,27 @@ class WC extends Oauth {
 	public function get_openid() {
 		return $this->recorder->read ( "openid" );
 	}
+    public function getAccessToken(){
+        $keysArr = array (
 
-    public function get_user_info() {
+//            "access_token" => $access_token ?$access_token:$this->recorder->read ( "access_token" ),
+            "openid" =>  $this->recorder->read ( "openid" ),
+//            "appid" => $this->recorder->readInc ( "appid" ),
+            "secret" => $this->recorder->readInc ( "appkey" ),
+            "code" => $_GET ['code'],
+            "grant_type" => "authorization_code"
+        );
+
+        // ------构造请求access_token的url
+        $token_url = $this->urlUtils->combineURL ( self::GET_ACCESS_TOKEN_URL, $keysArr );
+        $response = $this->urlUtils->get_contents ( $token_url );
+        $result = json_decode ( $response, true );
+        var_dump($result);exit;
+    }
+    public function get_user_info($access_token=null,$openid=null) {
 		$keysArr = array (
 				//"grant_type" => "authorization_code",
-				"access_token" => $this->recorder->read ( "access_token" ),
+				"access_token" => $access_token ?$access_token:$this->recorder->read ( "access_token" ),
 				"openid" => $this->recorder->read ( "openid" ),
 		        //"appid" => $this->recorder->readInc ( "appid" ),
 				//"secret" => $this->recorder->readInc ( "appkey" ),
@@ -77,7 +93,6 @@ class WC extends Oauth {
 		// ------构造请求access_token的url
 		$token_url = $this->urlUtils->combineURL ( self::GET_USER_INFO_URL, $keysArr );
 		$response = $this->urlUtils->get_contents ( $token_url );
-
         return json_decode ( $response, true );
     }
 	

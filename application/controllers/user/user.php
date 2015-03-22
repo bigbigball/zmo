@@ -44,20 +44,19 @@ class User extends CI_Controller {
 
         ini_set('display_errors', 'on');
         error_reporting(E_ALL);
-
         include_once APPPATH . 'third_party/wx/wxConnectAPI.php';
         $wc = new WC ();
         $access_token = $wc->wx_callback();
         $openid = $wc->get_openid();
-        $info = $wc->get_user_info ();
-
+        $info = $wc->get_user_info ($access_token,$openid);
         $params = array();
         $params['type'] = 'wx';
         $params['openid'] = $openid;
         $params['nick_name'] = $info['nickname'];
-
+        $_SESSION ['uid'] = $params['openid'];
+        $_SESSION['uname'] = $params['nick_name'];
         $_SESSION ['tencent_login'] = $params;
-        redirect(site_url ( 'user/user/wx_callback_login' ));
+        msgs ( '登陆成功', site_url ( 'user/user/center' ) );
     }
 
     function wx_callback_login () {

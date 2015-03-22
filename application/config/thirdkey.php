@@ -11,7 +11,7 @@ $config ['bd'] ['rurl'] = 'http://zmo.cmlove.cm/index.php/user/user/bdlogin.html
 
 $config ['qq'] ['appid'] = '101197438';
 $config ['qq'] ['appkey'] = 'd182f14a41ee8a8b1ade654806331448';
-$config ['qq'] ['callback'] = 'http://www.zmoclub.com/index.php/user/user/qq_callback.html';
+$config ['qq'] ['callback'] = 'http://zmoclub.com/index.php/user/user/qq_callback.html';
 $config ['qq'] ['state'] = '5c3eaeb36be89510bebbc0cb29fd71f4';
 $config ['qq'] ['scope'] = 'get_user_info';
 $config ['qq'] ['errorReport'] = true;
@@ -23,8 +23,10 @@ $config ['qq'] ['database'] = 'test';
 
 $config ['wx'] ['appid'] = 'wx0ab4775a3c02e017';
 $config ['wx'] ['appkey'] = '51cad56562a17f7f9d51660102e05507';
-$config ['wx'] ['callback'] = 'http://www.zmoclub.com/index.php/user/user/wx_callback.html';
+$config ['wx'] ['callback'] = 'http://zmoclub.com/index.php/user/user/wx_callback.html';
 $config ['wx'] ['state'] = '38bc93501b3b3c512378d95f3c116aca';
+$config ['wx'] ['access_token'] = '';
+$config ['wx'] ['openid'] = '';
 $config ['wx'] ['scope'] = 'snsapi_login';
 
 $config["weibo_conf"] = array(

@@ -62,9 +62,9 @@ class Oauth {
 		$response = $this->urlUtils->get_contents ( $token_url );
 		
         $params = json_decode($response, true);
-		
 		$this->recorder->write ( "access_token", $params ["access_token"] );
 		$this->recorder->write ( "openid", $params ["openid"] );
+
 		return $params ["access_token"];
 	}
 //	public function get_openid() {
