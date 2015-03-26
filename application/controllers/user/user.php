@@ -31,9 +31,23 @@ class User extends CI_Controller {
 		$uid_get = $c->get_uid();//获取u_id
 		$uid = $uid_get['uid'];
 		$user_message = $c->show_user_by_id($uid);//获取用户信息
-		$_SESSION ['uid'] = $user_message['id'];
+		$params = array();
+        $params['type'] = 'wb';
+        $params['openid'] = $user_message['id'];
+        $params['nick_name'] = $user_message['name'];
 		$_SESSION['uname'] = $user_message['name'];
-		msgs ( '登陆成功', site_url ( 'user/user/center' ) );
+		$info = $this->user_model->login_by_sina ( $params);
+        switch ($info ['ret']) {
+            case 200 :
+                msgs ( '登陆成功', site_url ( 'user/user/center' ) );
+                break;
+            case 204 :
+                err_msgs ( '登录失败', site_url ( 'user/user/login' ) );
+                break;
+            case 400 :
+                err_msgs ( '参数错误', site_url ( 'user/user/login' ) );
+                break;
+        }
 	}
     function wx_callback () {
         if ($this->check_login ()) {
