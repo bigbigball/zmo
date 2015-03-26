@@ -27,7 +27,7 @@ class Lesson_model extends CI_Model {
 	}
 	function getlist($post) {
 		$data = array ();
-		$this->db->select ( 'id , title , desc , guest_id , is_price , price, ,tag_info as tag , type , top,img ,thumb' );
+		$this->db->select ( 'id , title , desc , stime,etime,guest_id , is_price , price, ,tag_info as tag , type , top,img ,thumb' );
 		$this->db->where ( 'status = ', 0 );
 		if ($post ['type'] > 0) {
 			$this->db->where ( 'type =', $post ['type'] );
@@ -91,7 +91,7 @@ class Lesson_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , content,title,guest_id ,stime,etime ,address, guest_id ,img, is_price , price,tag_info as tag,address,desc,content' );
+		$this->db->select ( 'id , content,title,stime,etime,guest_id ,stime,etime ,address, guest_id ,img, is_price , price,tag_info as tag,address,desc,content' );
 		$this->db->from ( 'lesson' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ();

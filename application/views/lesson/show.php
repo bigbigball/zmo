@@ -36,7 +36,9 @@
                     <?php }?>
                             </a>
                     </div>
-					<div class="itag"><?php if($v['type'] == 1){ echo '视频课程';}elseif($v['type'] == 2){ echo '线下课程';}?></div>
+					<div class="itag">
+						<?php if($v['type'] == 1){ echo '线上课程';}elseif($v['type'] == 2){ echo '线下课程';}?>
+					</div>
 				</div>
 				<div class="left iinfo">
                     <a href="javascript:void(0);"
@@ -64,10 +66,17 @@
 						价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{ echo '免费';}?></span>
 					</div>
 					<div class="clearfix">
+                    <?php if($v['etime'] > time()){ ?>
 						<div class="ibutton mt20 left">
 							<a href="javascript:void(0);"
 								onclick="buy_lesson('<?php echo $v['id'];?>');">购买</a>
 						</div>
+                    <?php }else{?>
+                        <div class="ibutton mt20 left">
+                            <a href="javascript:void(0);"
+                               style="background: #bcbcbc"  >已结束</a>
+                        </div>
+                    <?php } ?>
 					</div>
 				</div>
 			</div>

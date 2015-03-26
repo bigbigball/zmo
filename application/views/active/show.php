@@ -59,10 +59,17 @@
 						价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{ echo '免费';}?></span>
 					</div>
 					<div class="clearfix">
+                        <?php if($v['etime'] > time()){ ?>
 						<div class="ibutton mt20 left">
 							<a href="javascript:void(0);"
 								onclick="sign_up('<?php echo $v['id'];?>');">报名</a>
 						</div>
+                        <?php }else{?>
+                            <div class="ibutton mt20 left">
+                                <a href="javascript:void(0);"
+                                   style="background: #bcbcbc" >已经结束</a>
+                            </div>
+                        <?php } ?>
                         <?php if(!empty($v['quota'])){?>
                         <div class="left member_number mt20">剩余名额:<?php echo ($v['quota'] - $v['sign_num']);?>个</div>
                         <?php }else{?>

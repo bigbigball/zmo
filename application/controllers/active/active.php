@@ -36,8 +36,7 @@ class Active extends CI_Controller {
 		
 		$info = $this->active_model->getlist ( $option );
 		$data ['info'] = $info;
-		$data ['type'] = $option ['type'];
-		$data ['page'] = $pagination;
+		$data ['type'] = $option ['type']; $data ['page'] = $pagination;
 		$this->load->view ( 'active/show', $data );
 	}
 	function info($id) {

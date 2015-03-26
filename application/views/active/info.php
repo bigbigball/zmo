@@ -27,8 +27,13 @@
 				<?php if($is_join){?>
                 <a href="javascript:void(0);" class="btn mr30">已报名</a>
                 <?php }else{?>
-            	<a href="javascript:void(0);" class="btn mr30"
+                    <?php if($info['etime'] > time()){ ?>
+            	        <a href="javascript:void(0);" class="btn mr30"
 						onclick="sign_up();">报名</a>
+                        <?php }else{?>
+                        <a href="javascript:void(0);" class="btn mr30"
+                           style="background: #bcbcbc" >报名</a>
+                        <?php }?>
                 <?php }?>
 				<input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
 					<input type="hidden" name="type" value="4">

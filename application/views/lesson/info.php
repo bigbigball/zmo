@@ -101,12 +101,18 @@ switch (date ( 'w', $info ['etime'] )) {
 					<input type="hidden" name="id" value="<?php echo $info['id'];?>" />
 					<input type="hidden" name="type" value="2">
                     <?php if($is_join){echo '<span style="font-size:18px;">您已经报名</span>';}else{?>
-                    <a href="javascript:void(0);" class="btn"
+                    <?php if($info['etime'] > time()){ ?>
+                        <a href="javascript:void(0);" class="btn"
 						onclick="sign_up();">报名</a>
+                    <?php }else{?>
+                            <a href="javascript:void(0);" class="btn"
+                               style="background: #bcbcbc" >已结束</a>
+
+                    <?php }?>
                     <?php }?>
                     <input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
                     <?php if($is_collect){?>
-                <a style="color: #000; font-size: 20px;">已收藏</a>
+                <a style="color: #000; font-size: 20px;">已收u藏</a>
                 <?php }else{?>
                 <a href="javascript:void(0);" class="btn"
 						style="margin-top: 15px;" onclick="collection('2');">收藏</a>

@@ -264,12 +264,44 @@ class User extends CI_Controller {
 		}
 		$this->order ();
 	}
-	function order() {
+    function do_upload()
+    {
+        error_reporting(0);
+        $config['upload_path'] = './upload/avatar/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '100';
+//        $config['max_width']  = '186';
+//        $config['max_height']  = '154';
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('uploadAvatar'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $_FILES =array();
+            $url = 'http://zmoclub.com/index.php/user/user/order.html';
+            header('Location:'.$url);
+
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $image_url = 'upload/avatar/'.$data['upload_data']['file_name'];
+            $data1 ['photo'] = $image_url;
+            $info = $this->db->where ( 'id', $_SESSION ['uid'] )->update ( 'user', $data1 );
+            $url = 'http://zmoclub.com/index.php/user/user/order.html';
+            $_FILES =array();
+            header('Location:'.$url);
+            return $info;
+        }
+    }
+    function order() {
 		if (! $this->check_login ()) {
 			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
 			return ;
 		}
-		
+        if(!empty($_FILES)){
+            $this->do_upload();
+        }
 		$get = $this->input->get ();
 		$action = ! empty ( $get ['action'] ) ? $get ['action'] : 'my_order_pay';
 		$otype = 0;
@@ -293,8 +325,8 @@ class User extends CI_Controller {
 		$data ['order'] = $order;
 		$data ['user_info'] = $user_info;
 		$data ['action'] = 'order';
-		$this->load->view ( 'user/order', $data );
-	}
+        $this->load->view ( 'user/order', $data );
+    }
 	function collect() {
 		if (! $this->check_login ()) {
 			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );

@@ -21,7 +21,7 @@ class Active_model extends CI_Model {
 	
 	function getlist($post) {
 		$data = array ();
-		$this->db->select ( 'id , title , desc , guest_id , is_price , price,quota ,tag,sign_num , type,img' );
+		$this->db->select ( 'id , title , desc,stime,etime , guest_id , is_price , price,quota ,tag,sign_num , type,img' );
 		if ($post ['type'] > 0) {
 			$this->db->where ( 'type =', $post ['type'] );
 		}
@@ -84,7 +84,7 @@ class Active_model extends CI_Model {
 		if (empty ( $id )) {
 			return false;
 		}
-		$this->db->select ( 'id , theme,address,title , content , guest_id , is_price , price,quota ,tag,sign_num,desc,img ' );
+		$this->db->select ( 'id , theme,address,title,stime,etime , content , guest_id , is_price , price,quota ,tag,sign_num,desc,img ' );
 		$this->db->from ( 'active' );
 		$this->db->where ( 'id', $id );
 		$query = $this->db->get ();

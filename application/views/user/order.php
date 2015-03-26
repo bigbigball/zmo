@@ -23,13 +23,44 @@
 						<div class="clearfix info">
 							<div class="name">
 								<div class="left productImg">
-									<img src="/zmo/static/img/orderTmp.jpg" alt="" title="" />
-									<!--span>视频课程</span-->
-								</div><?php echo $order['order_goods'][$v['id']]['goods_title'];?>
+									<a href="<?php
+                                    if($order['order_goods'][$v['id']]['type']==2){
+                                        echo site_url('lesson/lesson/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
+                                    }else if($order['order_goods'][$v['id']]['type'] == 4){
+                                        echo site_url('active/active/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
+                                    }else if($order['order_goods'][$v['id']]['type'] == 5){
+                                        echo site_url('video/video/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
+                                    }
+                                    ?>" class="btn" >
+                                        <img src="
+                                <?php if($order['order_goods'][$v['id']]['type']==5){ ?>
+                                        <?php echo $order['order_goods'][$v['id']]['goods']['video_info']['video']['image'];?>
+                                <?php }else{?>
+                                        <?php echo $order['order_goods'][$v['id']]['goods']['img'];?>
+                                <?php }?>
+                                        "
+                                             alt="" title="" height="120px" width="150px" />
+                                    </a>
+                                    <!--span>视频课程</span-->
+                                </div>
+
+                                <a href="<?php
+                                if($order['order_goods'][$v['id']]['type']==2){
+                                    echo site_url('lesson/lesson/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
+                                }else if($order['order_goods'][$v['id']]['type'] == 4){
+                                    echo site_url('active/active/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
+                                }else if($order['order_goods'][$v['id']]['type'] == 5){
+                                    echo site_url('video/video/info/',array('id'=>$order['order_goods'][$v['id']]['goods_id']));
+                                }
+                                ?>" style="font-size: 22px;
+color: #000;
+line-height: 30px;" >
+                                    <span> <?php echo $order['order_goods'][$v['id']]['goods_title'];?></span>
+                                </a>
                             </div>
-							<div class="pay"><p><?php echo $v['price'];?></p></div>
-							<div class="status">
-                            	<?php if($v['status'] == 2){?>
+                            <div class="pay"><p><?php echo $v['price'];?></p></div>
+                            <div class="status">
+                                <?php if($v['status'] == 2){?>
                                 <p>已支付</p>
                                 <?php }else if($v['status'] == 0){?>
 								<p><a href="<?php echo
@@ -64,7 +95,6 @@
 </div>
 <script>
 $(document).ready(function(){
-
 })
 </script>
 

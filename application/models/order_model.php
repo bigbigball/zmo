@@ -188,7 +188,7 @@ class Order_model extends CI_Model {
 			foreach ( $order as $k => $v ) {
 				$oid [] = $v ['id'];
 			}
-			$this->db->select ( 'id ,order_id, goods_id , goods_title,goods_img' );
+			$this->db->select ( 'id ,order_id, goods_id,type , goods_title,goods_img' );
 			$this->db->where_in ( 'order_id', $oid );
 			$this->db->limit ( 10 );
 			$query = $this->db->get ( 'order_goods' );
@@ -197,7 +197,18 @@ class Order_model extends CI_Model {
 				$order_goods = $query->result_array ();
 				foreach ( $order_goods as $k => $v ) {
 					$ogid [] = $v ['goods_id'];
+                    if ($v['type'] == 2) {
+                        $this->load->model ( 'lesson_model', '', true );
+                        $goods = $this->lesson_model->getinfo ( $v['goods_id'] );
+                    } else if ($v['type'] == 4) {
+                        $this->load->model ( 'active_model', '', true );
+                        $goods = $this->active_model->getinfo ( $v['goods_id'] );
+                    }else if($v['type']==5){
+                        $this->load->model ( 'video_model', '', true );
+                        $goods = $this->video_model->get_info ( $v['goods_id'] );
+                    }
 					$order_goods_info [$v ['order_id']] = $v;
+                    $order_goods_info [$v ['order_id']]['goods'] = $goods;
 				}
 			}
 			$data ['order'] = $order;
