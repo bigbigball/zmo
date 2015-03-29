@@ -32,7 +32,8 @@
                                         echo site_url('video/video/info/'.$order['order_goods'][$v['id']]['goods_id'],array());
                                     }
                                     ?>" class="btn" >
-                                        <img src="
+                                        <?php if($order['order_goods'][$v['id']]['type']!=6){?>
+                                            <img src="
                                 <?php if($order['order_goods'][$v['id']]['type']==5){ ?>
                                         <?php echo $order['order_goods'][$v['id']]['goods']['video_info']['video']['image'];?>
                                 <?php }else{?>
@@ -40,6 +41,9 @@
                                 <?php }?>
                                         "
                                              alt="" title="" height="120px" width="150px" />
+                                        <?php }else{?>
+                                            <img src="/zmo/static/img/uservip.jpg" alt="" title="" height="120px" width="150px" />
+                                        <?php }?>
                                     </a>
                                     <!--span>视频课程</span-->
                                 </div>

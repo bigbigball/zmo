@@ -13,6 +13,8 @@ class User extends CI_Controller {
 		$this->config->load("thirdkey");
 		$this->weibo = $this->config->item("weibo_conf");
 		include_once APPPATH."/libraries"."/saetv2.ex.class.php";
+
+        $this->load->model ( 'buy_model', '', true );
 	}
 	function weibo_callback() {
 		$code = $_REQUEST['code'];//code值由入口文件callback.php传过来
@@ -292,6 +294,29 @@ class User extends CI_Controller {
             $_FILES =array();
             header('Location:'.$url);
             return $info;
+        }
+    }
+    function buy_year(){
+        if (! $this->check_login ()) {
+            err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
+        }
+        $this->load->model ( 'buy_model', '', true );
+        $this->db->select ( '*' );
+        $this->db->from ( 'year' );
+        $query = $this->db->get ();
+        if ($query->num_rows () > 0) {
+            $info = $query->row_array ();
+            if($info){
+                $post['id'] = $info['id'];
+                $post['type'] = 6;
+                $post['is_year'] = md5('afddkfjdkfjd123438');
+                $info = $this->buy_model->sign_up ( $post );
+                if($info['ret']==200){
+                    $oid=$info['oid'];
+                    $uri = "/order/order/buy.html?oid=".$oid;
+                    redirect($uri,'location');
+                }
+            }
         }
     }
     function order() {

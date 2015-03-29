@@ -18,6 +18,9 @@ class Buy_model extends CI_Model {
 		}else if($post ['type'] == 5){
             $this->db->select ( '*' );
             $this->db->from ( 'video' );
+        }else if($post ['type'] == 6){
+            $this->db->select ( '*' );
+            $this->db->from ( 'year' );
         }
 		$this->db->where ( 'id', $post ['id'] );
 		$query = $this->db->get ();
@@ -44,8 +47,12 @@ class Buy_model extends CI_Model {
             }else{
                 $data ['status'] = floatval($info ['price']) == 0 ? 2 : 0;
             }
+
+            if($post['type'] == 6){
+                $data ['is_year'] = $post ['is_year'];
+            }
 			$data ['user_id'] = $_SESSION ['uid'];
-			$dtga ['itype'] = $info ['type'];
+			$data ['itype'] = $info ['type'];
 			$data ['ctime'] = time ();
 			$data ['utime'] = time ();
 			$this->db->insert ( 'order', $data );
@@ -81,7 +88,26 @@ class Buy_model extends CI_Model {
 				'ret' => 204 
 		);
 	}
-	private function get_order_sn() {
+    /**
+     * 得到新订单号
+     * @return  string
+     */
+    function get_order_sn(){
+        $code = '';
+        do
+        {
+            $date = date('YmdHis');
+            list($usec, $sec) = explode(" ", microtime());
+            $code = $date.substr($usec,2,6);
+            if ( !$this->db->query(" select order_sn from z_order where order_sn = '$code' ")->row_array() )
+            {
+                break;
+            }
+        }while (true);
+        return $code;
+
+    }
+	private function get_order_sn1() {
 		$order = $this->config->item ( 'order' );
 		$order_sn = $order ['hcode'];
 		$this->db->select ( 'id,order_sn' );

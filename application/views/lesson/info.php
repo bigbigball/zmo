@@ -112,7 +112,7 @@ switch (date ( 'w', $info ['etime'] )) {
                     <?php }?>
                     <input type="hidden" name="id" id="tid" value="<?php echo $info['id'];?>" />
                     <?php if($is_collect){?>
-                <a style="color: #000; font-size: 20px;">已收u藏</a>
+                <a style="color: #000; font-size: 20px;">已收藏</a>
                 <?php }else{?>
                 <a href="javascript:void(0);" class="btn"
 						style="margin-top: 15px;" onclick="collection('2');">收藏</a>

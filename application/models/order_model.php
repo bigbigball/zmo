@@ -48,12 +48,21 @@ class Order_model extends CI_Model {
 	}
 	function update_order($post) {
 		if (! empty ( $post ['oid'] )) {
-			$this->db->select ( 'id,status' );
+			$this->db->select ( 'id,status,user_id,itype,is_year' );
 			$this->db->where ( 'id', $post ['oid'] );
 			$query = $this->db->get ( 'order' );
 			if ($query->num_rows () > 0) {
 				$info = $query->row_array ();
 				if ($info ['status'] < $post ['status']) {
+                    if ($info ['itype'] == 6 and  $info['is_year']==md5('afddkfjdkfjd123438')) {
+                        $data['is_year'] =1;
+                        //更新为年费会员
+                        $this->db->where ( 'id', $info ['user_id'] )->update ( 'user', array(
+                            'year'=>1,
+                            'year_start'=>time(),
+                            'year_end'=>time()+strtotime("+1 year"),
+                        ) );
+                    }
 					$data = array();
 					foreach (array('status','buyer_email','buyer_id','notify_id','trade_no') as $key) {
 						if (isset($post[$key])) {
@@ -108,6 +117,8 @@ class Order_model extends CI_Model {
 			$show_url = site_url ( "active/active/info/{$info_goods['goods_id']}" );
         } else if ($post ['type'] == 5) {
             $show_url = site_url ( "video/video/info/{$info_goods['goods_id']}" );
+        } else if ($post ['type'] == 6) {
+            $show_url = site_url ( "user/user/center" );
 		}
 		// 需以http://开头的完整路径，例如：http://www.商户网址.com/myorder.html //防钓鱼时间戳
 		$anti_phishing_key = "";

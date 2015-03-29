@@ -12,7 +12,8 @@
 	<div class="clearfix mt40 ">
 		<div class="f24 mb20"><?php echo $info['video_info']['video']['title']?></div>
 		<div class="f16 mb20" style="color:"><?php echo date('Y年m月d日' , $info['ctime'])?></div>
-        <?php if($info['is_cost']==0): ?>
+        <?php
+        if(($info['is_cost']==0) or (isset($user_info['year']) and $user_info['year'] ==1 and $user_info['year_end']>time())) : ?>
 		<div>
         	<?php echo $info['play_info']['video']['playcode'];?>
         </div>
@@ -74,7 +75,7 @@
 		</p>
 		<ul class="news_comment_user">
 		</ul>
-		<strong class="bot" id="news_comment_more">展开查看全部</strong>
+<!--		<strong class="bot" id="news_comment_more">展开查看全部</strong>-->
 	</div>
 </div>
 <script>

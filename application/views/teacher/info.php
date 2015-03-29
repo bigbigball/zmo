@@ -42,21 +42,29 @@
             这个导师马上就要开课了，期待吧！
         <?php }?>
     	<?php if(!empty($info['lesson'])){foreach($info['lesson'] as $k => $v){?>
-    	<div class="introduction_block clearfix introduction_line">
+    	<div class="introduction_block clearfix introduction_line" style="height: 416px;">
 			<div class="left ibimg">
-				<div>
-					<img src="/zmo/static/tmp/list.png" width="250px"/>
+				<div><a href="/index.php/lesson/lesson/info/<?php echo $v['id'] ?>.html">
+					<img src="<?php echo  $v['lesson_info']['img']?>"
+ width="250px" height='208px' /></a>
 				</div>
 				<div class="ibimg_tag">视频课程</div>
 			</div>
 			<div class="left iinfo">
-				<div class="ititle"><?php echo $v['title'];?></div>
+				<div class="ititle"><a style="color: #000;
+font-size: 24px;
+line-height: 30px;" href="/index.php/lesson/lesson/info/<?php echo $v['id'] ?>.html"><?php echo $v['title'];?></a></div>
 				<div class="iteachter mt20">导师：<?php echo $info['name'];?></div>
                 <div class="clearfix">
 						<div class="ibutton mt20 left">
+                            <?php if($v['lesson_info']['etime'] >time()){?>
 							<a href="javascript:void(0);"
 								onclick="buy_lesson('<?php echo $v['id'];?>');">购买</a>
-						</div>
+						    <?php }else{?>
+                                <a href="/index.php/lesson/lesson/info/<?php echo $v['id'] ?>.html"
+                                  style="background: #bcbcbc;" >已结束</a>
+                            <?php }?>
+                        </div>
 					</div>
 				<div class="ctag clearfix mt10">
 					<div class="left ttag">标签：</div>
@@ -65,7 +73,8 @@
                     <?php }}?>
                 </div>
 				<div class="idesc mt15">
-                课程简介：<?php echo $v['desc']?>
+                课程简介：
+                    <?php echo $v['desc']?>
                 </div>
 				<div class="iprice mt10">
 					价格：<span class="price"><?php if($v['is_price'] == 1){ echo $v['price'];}else{echo '免费';}?></span>

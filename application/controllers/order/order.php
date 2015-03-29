@@ -9,6 +9,7 @@ class Order extends CI_Controller {
 			err_msgs ( '您没有登陆，请您登陆', site_url ( 'user/user/login' ) );
 		}
 		$this->load->model ( 'order_model', '', true );
+        $this->load->model ( 'user_model', '', true );
 		$this->load->library ( 'form_validation' );
 	}
 	public function buy() {
@@ -33,6 +34,14 @@ class Order extends CI_Controller {
 			}else if($info['info']['type']==5){
                 $this->load->model ( 'video_model', '', true );
                 $goods = $this->video_model->get_info ( $info ['info'] ['goods_id'] );
+            }else if($info['info']['type']==6){
+                $this->db->select ( '*' );
+                $this->db->from ( 'year' );
+                $query = $this->db->get ();
+                $goods = array();
+                if ($query->num_rows () > 0) {
+                    $goods= $query->row_array ();
+                }
             }
 			$data ['goods'] = $goods;
 			$data ['order'] = $info;

@@ -19,7 +19,7 @@
             <div class="subTitle" style="margin-top: 10px;">导师：<?php echo $val['name'];?></div>
                     <?php endforeach; ?>
             <?php }?>
-            <?php if($order['info']['type'] != 5){?>
+            <?php if($order['info']['type'] != 6 and $order['info']['type'] != 5){?>
                 <div class="title" style="margin-top: 10px;margin-bottom: 8px;">课程简介</div>
             <?php }?>
             <?php if(!empty($goods['desc'])){?>
@@ -45,4 +45,3 @@ $(document).ready(function(){
 </script>
 
 <?php $this->load->view('public/footer.php');?>
-

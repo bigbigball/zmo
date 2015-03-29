@@ -71,7 +71,9 @@
                             </div>
                         <?php } ?>
                         <?php if(!empty($v['quota'])){?>
-                        <div class="left member_number mt20">剩余名额:<?php echo ($v['quota'] - $v['sign_num']);?>个</div>
+                            <?php if($v['etime'] > time()){ ?>
+                                <div class="left member_number mt20">剩余名额:<?php echo ($v['quota'] - $v['sign_num']);?>个</div>
+                            <?php }?>
                         <?php }else{?>
                         <div class="left member_number mt20">不限</div>
                         <?php }?>

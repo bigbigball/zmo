@@ -6,6 +6,7 @@ class Teacher extends CI_Controller {
 	function __construct() {
 		parent::__construct ();
 		$this->load->model ( 'teacher_model', '', true );
+        $this->load->model ( 'lesson_model', '', true );
 		$this->load->library ( 'form_validation' );
 		$ci = & get_instance ();
 		$variable = array (
@@ -41,6 +42,12 @@ class Teacher extends CI_Controller {
 		}
 		$info = $this->teacher_model->getinfo ( $id );
 		if (! empty ( $info )) {
+            if(isset($info['lesson'])){
+                foreach($info['lesson'] as $key=>$val){
+                    $lesson_info = $this->lesson_model->getinfo ( $val['id'] );
+                    $info['lesson'][$key]['lesson_info']=$lesson_info;
+                }
+            }
 			$data ['info'] = $info;
 			$data ['is_collect'] = $this->teacher_model->check_collect ( $id );
 			$this->load->view ( 'teacher/info', $data );
