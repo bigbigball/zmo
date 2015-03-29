@@ -154,8 +154,16 @@ class User_model extends CI_Model {
 				$_SESSION ['uid'] = $info ['id'];
 				if (! empty ( $info ['nick_name'] )) {
 					$_SESSION ['uname'] = $info ['nick_name'];
-				} else
+				} else {
 					$_SESSION ['uname'] = ! empty ( $info ['nick_name'] ) ? $info ['nick_name'] : ! empty ( $info ['email'] ) ? substr ( $info ['email'], 0, strpos ( $info ['email'], '@' ) ) : substr ( $info ['mobile'], 0, 4 );
+                }
+
+                // 更新昵称&头像
+                $data = array();
+				$data ['nick_name'] = $params['nick_name'];
+				$data ['photo'] = $params['photo'];
+				$this->db->where('id', $info['id'])->update('user', $data);
+
 				$data ['ret'] = 200;
 			} else {
 				$data ['ret'] = 204;

@@ -58,21 +58,23 @@ class User extends CI_Controller {
         $post = $this->input->post ();
         $get = $this->input->get ();
 
-        ini_set('display_errors', 'on');
-        error_reporting(E_ALL);
+        #ini_set('display_errors', 'on');
+        #error_reporting(E_ALL);
+
         include_once APPPATH . 'third_party/wx/wxConnectAPI.php';
         $wc = new WC ();
         $access_token = $wc->wx_callback();
         $openid = $wc->get_openid();
-        $info = $wc->get_user_info ($access_token,$openid);
+        $info = $wc->get_user_info ();
+
         $params = array();
         $params['type'] = 'wx';
         $params['openid'] = $openid;
         $params['nick_name'] = $info['nickname'];
-        $_SESSION ['uid'] = $params['openid'];
-        $_SESSION['uname'] = $params['nick_name'];
+        $params['photo'] = $info['headimgurl'];
+
         $_SESSION ['tencent_login'] = $params;
-        msgs ( '登陆成功', site_url ( 'user/user/center' ) );
+        redirect(site_url ( 'user/user/wx_callback_login' ));
     }
 
     function wx_callback_login () {
@@ -110,6 +112,7 @@ class User extends CI_Controller {
         $params['type'] = 'qq';
         $params['openid'] = $openid;
         $params['nick_name'] = $info['nickname'];
+        $params['photo'] = $info['figureurl_qq_1'];
 					
         $_SESSION ['tencent_login'] = $params;
         redirect(site_url ( 'user/user/qq_callback_login' ));
